@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+package tutorial;
+
+message TFile {
+    repeated float Weights = 1;
+    required string Name = 2;
+    repeated int32 Hosts = 3; 
+}
+
+message TFileSet {
+    repeated TFile Files = 1;
+    required int64 Hash = 2;
+}
+
+message TReport {
+    repeated int32 Nums = 1;
+    repeated string Strings = 2;
+    repeated TFileSet SetsOfFiles = 3;
+}

@@ -1,0 +1,1 @@
+./build/proto_gen/proto_gen --seed=13 --nums_cnt=100 --strings_cnt=100 --string_size=1000 --float_cnt=10 --files_cnt=100 --sets_cnt=100 --out=./out.txt
