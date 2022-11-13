@@ -5,6 +5,7 @@
 namespace NGenProto {
 
 struct TGenOpts {
+    size_t Seed = 0;
     size_t NumsCount = 0;
     size_t StringsCount = 0;
     size_t FloatCount = 0;

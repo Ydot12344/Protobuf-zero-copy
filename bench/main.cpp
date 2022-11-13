@@ -30,6 +30,7 @@ public:
     TEnvHolder() {
         // Init
 
+        opts.Seed = 12;
         opts.NumsCount = 100;
         opts.StringsCount = 100;
         opts.StringSize = 100;
@@ -39,8 +40,8 @@ public:
 
         report =  NGenProto::GenReport(opts);
 
-        std::string out; 
-        report.SerializeToString(&out);
+        std::ofstream out("out.txt"); 
+        report.SerializeToOstream(&out);
     }
 
     NGenProto::TGenOpts opts;
@@ -127,6 +128,31 @@ static void BM_ParseProtoFromFile(benchmark::State& state) {
     
     Check(out);
 }
+
+static void BM_CopyWithoutParsing(benchmark::State& state) {
+
+    const auto& env = *TSingletone<TEnvHolder>();
+    std::string out;
+    out.reserve(170000000);
+    tutorial::TReport a = env->report;
+    for (auto _ : state) {
+        tutorial::TReport res;
+
+        std::sort(a.mutable_setsoffiles()->begin(), a.mutable_setsoffiles()->end(), 
+            [](const auto& a, const auto& b) {return a.hash() > b.hash();}
+        );
+
+        for (size_t i = 0; i < a.setsoffiles_size() / 2; i++) {
+            *res.add_setsoffiles() = a.setsoffiles(i);
+        }
+
+        res.SerializeToString(&out);
+    }
+    
+    Check(out);
+}
+
 // Register the function as a benchmark
 BENCHMARK(BM_ParseProtoFromFile);
+BENCHMARK(BM_CopyWithoutParsing);
 BENCHMARK_MAIN();

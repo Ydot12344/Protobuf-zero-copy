@@ -5,6 +5,8 @@ namespace NGenProto {
 using namespace tutorial;
 
 TReport GenReport(const TGenOpts& opts) {
+    srand(opts.Seed);
+    
     TReport res;
     
     for (size_t i = 0; i < opts.SetsOfFilesCount; i++) {
