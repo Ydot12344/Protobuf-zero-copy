@@ -1,5 +1,5 @@
 ----------------------------------------------------------------
 Benchmark                      Time             CPU   Iterations
 ----------------------------------------------------------------
-BM_ParseProtoFromFile  984525971 ns    972641164 ns            1
-BM_CopyWithoutParsing  154286157 ns    154237304 ns            4
+BM_ParseProtoFromFile 1124770879 ns   1096101932 ns            1
+BM_CopyWithoutParsing  188459538 ns    185180819 ns            4
