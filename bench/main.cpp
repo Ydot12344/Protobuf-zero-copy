@@ -1,3 +1,4 @@
+#include "google/protobuf/arena.h"
 #include "messge.pb.h"
 #include <benchmark/benchmark.h>
 #include <gtest/gtest.h>
@@ -35,7 +36,7 @@ public:
         opts.StringsCount = 100;
         opts.StringSize = 100;
         opts.FloatCount = 100;
-        opts.FilesCount = 2000;
+        opts.FilesCount = 200;
         opts.SetsOfFilesCount = 100;
 
         report =  NGenProto::GenReport(opts);
@@ -152,7 +153,42 @@ static void BM_CopyWithoutParsing(benchmark::State& state) {
     Check(out);
 }
 
+static void BM_ParseProtoFromFileWithArena(benchmark::State& state) {
+
+    const auto& env = *TSingletone<TEnvHolder>();
+    std::string out;
+    out.reserve(170000000);
+    size_t initial_size = 200*1024*1024;
+    char* initial_block = new char[initial_size];
+    google::protobuf::Arena arena(initial_block, initial_size);
+
+    for (auto _ : state) {
+        std::ifstream in("out.txt");
+
+        tutorial::TReport* a;
+        tutorial::TReport res;
+
+        a = google::protobuf::Arena::CreateMessage<tutorial::TReport>(&arena);
+
+        a->ParseFromIstream(&in);
+
+        std::sort(a->mutable_setsoffiles()->begin(), a->mutable_setsoffiles()->end(), 
+            [](const auto& a, const auto& b) {return a.hash() > b.hash();}
+        );
+
+        for (size_t i = 0; i < a->setsoffiles_size() / 2; i++) {
+            *res.add_setsoffiles() = a->setsoffiles(i);
+        }
+
+        res.SerializeToString(&out);
+    }
+    
+    Check(out);
+}
+
+
 // Register the function as a benchmark
-BENCHMARK(BM_ParseProtoFromFile);
-BENCHMARK(BM_CopyWithoutParsing);
+BENCHMARK(BM_ParseProtoFromFile)->Iterations(10);
+BENCHMARK(BM_CopyWithoutParsing)->Iterations(10);
+BENCHMARK(BM_ParseProtoFromFileWithArena)->Iterations(10);
 BENCHMARK_MAIN();
