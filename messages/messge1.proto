@@ -19,10 +19,6 @@ message TReport {
     repeated TFileSet SetsOfFiles = 3;
 }
 
-message TTestLazy {
-    required TRepeatedWraper wraper = 1 [lazy_pack = true];
-}
-
 message TTest {
     required TRepeatedWraper wraper = 1;
 }

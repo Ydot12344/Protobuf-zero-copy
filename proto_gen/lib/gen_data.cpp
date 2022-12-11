@@ -24,6 +24,24 @@ TReport GenReport(const TGenOpts& opts) {
     return res;
 }
 
+void GenRepeatedWraper(TRepeatedWraper* val, const TGenOpts& opts) {
+    for (size_t i = 0; i < opts.SetsOfFilesCount; i++) {
+        GenFileSet(val->add_setsoffiles(), opts);
+    }
+}
+
+void GenRepeatedWraper(TLazyField<TRepeatedWraper>* val, const TGenOpts& opts) {
+    for (size_t i = 0; i < opts.SetsOfFilesCount; i++) {
+        GenFileSet(val->Unpack()->add_setsoffiles(), opts);
+    }
+}
+
+TTest GenTest(const TGenOpts& opts) {
+    TTest res;
+    GenRepeatedWraper(res.mutable_wraper(), opts);
+    return res;
+}
+
 void GenFile(TFile* val, const TGenOpts& opts) {
     for (size_t i = 0; i < opts.FloatCount; i++) {
         val->add_weights(0.1f);

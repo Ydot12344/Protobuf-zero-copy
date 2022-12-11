@@ -16,6 +16,7 @@ struct TGenOpts {
 
 std::string GenString(size_t size);
 tutorial::TReport GenReport(const TGenOpts& opts);
+tutorial::TTest GenTest(const TGenOpts& opts);
 void GenFileSet(tutorial::TFileSet* val, const TGenOpts& opts);
 void GenFile(tutorial::TFile* val, const TGenOpts& opts);
 

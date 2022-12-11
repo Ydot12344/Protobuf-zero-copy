@@ -1,6 +1,5 @@
----------------------------------------------------------------------------------------
-Benchmark                                             Time             CPU   Iterations
----------------------------------------------------------------------------------------
-BM_ParseProtoFromFile/iterations:10           100329623 ns     96046329 ns           10
-BM_CopyWithoutParsing/iterations:10            16166735 ns     16157032 ns           10
-BM_ParseProtoFromFileWithArena/iterations:10   92856968 ns     92747429 ns           10
+------------------------------------------------------------------------------
+Benchmark                                    Time             CPU   Iterations
+------------------------------------------------------------------------------
+BM_TestLazyFromString/iterations:20  110851234 ns    110804684 ns           20
+BM_TestFromString/iterations:20      417467834 ns    416919462 ns           20

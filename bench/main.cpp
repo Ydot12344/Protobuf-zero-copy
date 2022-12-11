@@ -36,17 +36,21 @@ public:
         opts.StringsCount = 100;
         opts.StringSize = 100;
         opts.FloatCount = 100;
-        opts.FilesCount = 200;
+        opts.FilesCount = 2000;
         opts.SetsOfFilesCount = 100;
 
         report =  NGenProto::GenReport(opts);
+        test = NGenProto::GenTest(opts);
 
-        std::ofstream out("out.txt"); 
-        report.SerializeToOstream(&out);
+        std::ofstream out_report("report.bin"); 
+        std::ofstream out_test("test.bin");
+        report.SerializeToOstream(&out_report);
+        test.SerializeToOstream(&out_test);
     }
 
     NGenProto::TGenOpts opts;
     tutorial::TReport report;
+    tutorial::TTest test;
 };
 
 void CheckFilesEqual(const tutorial::TFile& a, const tutorial::TFile& b) {
@@ -109,7 +113,7 @@ static void BM_ParseProtoFromFile(benchmark::State& state) {
     out.reserve(170000000);
 
     for (auto _ : state) {
-        std::ifstream in("out.txt");
+        std::ifstream in("report.bin");
 
         tutorial::TReport a;
         tutorial::TReport res;
@@ -153,6 +157,22 @@ static void BM_CopyWithoutParsing(benchmark::State& state) {
     Check(out);
 }
 
+static void BM_ParseFromString(benchmark::State& state) {
+
+    const auto& env = *TSingletone<TEnvHolder>();
+    std::string out;
+    out.reserve(170000000);
+
+    std::ifstream in("report.bin");
+    std::string input = std::string((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
+    tutorial::TReport a;
+    for (auto _ : state) {
+        a.ParseFromString(input);
+    }
+    
+    //Check(out);
+}
+
 static void BM_ParseProtoFromFileWithArena(benchmark::State& state) {
 
     const auto& env = *TSingletone<TEnvHolder>();
@@ -163,7 +183,7 @@ static void BM_ParseProtoFromFileWithArena(benchmark::State& state) {
     google::protobuf::Arena arena(initial_block, initial_size);
 
     for (auto _ : state) {
-        std::ifstream in("out.txt");
+        std::ifstream in("report.bin");
 
         tutorial::TReport* a;
         tutorial::TReport res;
@@ -186,9 +206,49 @@ static void BM_ParseProtoFromFileWithArena(benchmark::State& state) {
     Check(out);
 }
 
+static void BM_TestLazyFromString(benchmark::State& state) {
+    const auto& env = *TSingletone<TEnvHolder>();
+
+    std::string out;
+    out.reserve(170000000);
+
+    std::ifstream in("test.bin");
+    std::string input = std::string((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
+    tutorial::TTestLazy a;
+
+    for (auto _ : state) {
+        a.ParseFromString(input);
+    }
+
+    std::string tmp = a.SerializeAsString();
+
+    ASSERT_EQ(tmp, input);
+}
+
+static void BM_TestFromString(benchmark::State& state) {
+    const auto& env = *TSingletone<TEnvHolder>();
+
+    std::string out;
+    out.reserve(170000000);
+
+    std::ifstream in("test.bin");
+    std::string input = std::string((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
+    tutorial::TTest a;
+
+    for (auto _ : state) {
+        a.ParseFromString(input);
+    }
+
+    std::string tmp = a.SerializeAsString();
+
+    ASSERT_EQ(tmp, input);
+}
 
 // Register the function as a benchmark
-BENCHMARK(BM_ParseProtoFromFile)->Iterations(10);
-BENCHMARK(BM_CopyWithoutParsing)->Iterations(10);
-BENCHMARK(BM_ParseProtoFromFileWithArena)->Iterations(10);
+//BENCHMARK(BM_ParseProtoFromFile)->Iterations(20);
+//BENCHMARK(BM_CopyWithoutParsing)->Iterations(20);
+//BENCHMARK(BM_ParseFromString)->Iterations(20);
+//BENCHMARK(BM_ParseProtoFromFileWithArena)->Iterations(20);
+BENCHMARK(BM_TestLazyFromString)->Iterations(20);
+BENCHMARK(BM_TestFromString)->Iterations(20);
 BENCHMARK_MAIN();
