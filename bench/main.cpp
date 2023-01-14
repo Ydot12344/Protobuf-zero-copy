@@ -294,7 +294,7 @@ static void BM_TestTTestLazyDefaultWork(benchmark::State& state) {
         file_set->mutable_files(0)->set_name("rename_0");
         a.SerializeToString(&out);
     }
-    
+
     // Check
     tutorial::TTest b;
     b.ParseFromString(input);
@@ -307,8 +307,34 @@ static void BM_TestTTestLazyDefaultWork(benchmark::State& state) {
     ASSERT_EQ(out, out_b);
 }
 
+static void BM_Memcpy(benchmark::State& state) {
+    const auto& env = *TSingletone<TEnvHolder>();
+
+    std::string input;
+    input.reserve(180*1024*1024);
+
+    std::ifstream in("test.bin");
+    input.assign((std::istreambuf_iterator<char>(in) ),
+                (std::istreambuf_iterator<char>()    ) );
+
+    tutorial::TTestLazy a;
+
+    char* out = new char[180*1024*1024];
+
+    std::cout << "Copy " << input.size() << "bytes" << std::endl;
+
+    for (auto _ : state) {
+        memcpy(out, input.data(), input.size());
+    }
+
+    std::string check(out, out + input.size());
+    ASSERT_EQ(check, input);
+
+    delete[] out;
+}
+
 // Register the function as a benchmark
-//BENCHMARK(BM_ParseProtoFromFile)->Iterations(20);
+//BENCHMARK(BM_ParseProtoFromFile)->src/google/protobuf/lazy_packed_field.hterations(20);
 //BENCHMARK(BM_CopyWithoutParsing)->Iterations(20);
 //BENCHMARK(BM_ParseFromString)->Iterations(20);
 //BENCHMARK(BM_ParseProtoFromFileWithArena)->Iterations(20);
@@ -317,4 +343,5 @@ BENCHMARK(BM_TestLazyFromString)->Iterations(20);
 BENCHMARK(BM_TestFromString)->Iterations(20);
 BENCHMARK(BM_TestTTestDefaultWork)->Iterations(20);
 BENCHMARK(BM_TestTTestLazyDefaultWork)->Iterations(20);
+BENCHMARK(BM_Memcpy)->Iterations(20);
 BENCHMARK_MAIN();
