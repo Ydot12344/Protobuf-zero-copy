@@ -1,5 +1,16 @@
-------------------------------------------------------------------------------
-Benchmark                                    Time             CPU   Iterations
-------------------------------------------------------------------------------
-BM_TestLazyFromString/iterations:20  110851234 ns    110804684 ns           20
-BM_TestFromString/iterations:20      417467834 ns    416919462 ns           20
+------------------------------------------------------------------------------------
+Benchmark                                          Time             CPU   Iterations
+------------------------------------------------------------------------------------
+BM_LoadEnv/iterations:1                        0.000 ns        0.000 ns            0
+BM_TestLazyFromString/iterations:20        121872972 ns    121188049 ns           20
+BM_TestFromString/iterations:20            422225567 ns    422034632 ns           20
+BM_TestTTestDefaultWork/iterations:20      583295031 ns    582843342 ns           20
+BM_TestTTestLazyDefaultWork/iterations:20  718501613 ns    716365627 ns           20
+------------------------------------------------------------------------------------
+Benchmark                                          Time             CPU   Iterations
+------------------------------------------------------------------------------------
+BM_LoadEnv/iterations:1                        0.000 ns        0.000 ns            0
+BM_TestLazyFromString/iterations:20        100402949 ns    100322036 ns           20
+BM_TestFromString/iterations:20            390635255 ns    390593240 ns           20
+BM_TestTTestDefaultWork/iterations:20      552347711 ns    552252686 ns           20
+BM_TestTTestLazyDefaultWork/iterations:20  820461204 ns    820183220 ns           20

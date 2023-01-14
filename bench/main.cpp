@@ -161,7 +161,7 @@ static void BM_ParseFromString(benchmark::State& state) {
 
     const auto& env = *TSingletone<TEnvHolder>();
     std::string out;
-    out.reserve(170000000);
+    out.reserve(180*1024*1024);
 
     std::ifstream in("report.bin");
     std::string input = std::string((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
@@ -173,12 +173,16 @@ static void BM_ParseFromString(benchmark::State& state) {
     //Check(out);
 }
 
+static void BM_LoadEnv(benchmark::State& state) {
+    const auto& env = *TSingletone<TEnvHolder>();
+}
+
 static void BM_ParseProtoFromFileWithArena(benchmark::State& state) {
 
     const auto& env = *TSingletone<TEnvHolder>();
     std::string out;
-    out.reserve(170000000);
-    size_t initial_size = 200*1024*1024;
+    out.reserve(180*1024*1024);
+    size_t initial_size = 180*1024*1024;
     char* initial_block = new char[initial_size];
     google::protobuf::Arena arena(initial_block, initial_size);
 
@@ -209,39 +213,98 @@ static void BM_ParseProtoFromFileWithArena(benchmark::State& state) {
 static void BM_TestLazyFromString(benchmark::State& state) {
     const auto& env = *TSingletone<TEnvHolder>();
 
-    std::string out;
-    out.reserve(170000000);
+    std::string input, out;
+    input.reserve(180*1024*1024);
+    out.reserve(180*1024*1024);
 
     std::ifstream in("test.bin");
-    std::string input = std::string((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
+    input.assign((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
     tutorial::TTestLazy a;
+
+    std::ifstream inx("test.bin");
 
     for (auto _ : state) {
         a.ParseFromString(input);
     }
+    
+    a.SerializeToString(&out);
 
-    std::string tmp = a.SerializeAsString();
-
-    ASSERT_EQ(tmp, input);
+    ASSERT_EQ(out, input);
 }
 
 static void BM_TestFromString(benchmark::State& state) {
     const auto& env = *TSingletone<TEnvHolder>();
 
-    std::string out;
-    out.reserve(170000000);
+    std::string input, out;
+    input.reserve(180*1024*1024);
+    out.reserve(180*1024*1024);
 
     std::ifstream in("test.bin");
-    std::string input = std::string((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
+    input.assign((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
     tutorial::TTest a;
 
     for (auto _ : state) {
         a.ParseFromString(input);
     }
 
-    std::string tmp = a.SerializeAsString();
+    a.SerializeToString(&out);
 
-    ASSERT_EQ(tmp, input);
+    ASSERT_EQ(out, input);
+}
+
+static void BM_TestTTestDefaultWork(benchmark::State& state) {
+    const auto& env = *TSingletone<TEnvHolder>();
+
+    std::string out, input;
+    input.reserve(180*1024*1024);
+    out.reserve(180*1024*1024);
+
+    std::ifstream in("test.bin");
+    input.assign((std::istreambuf_iterator<char>(in) ),
+                (std::istreambuf_iterator<char>()    ) );
+
+    tutorial::TTest a;
+
+    for (auto _ : state) {
+        a.ParseFromString(input);
+        auto* file_set = a.mutable_wraper()->mutable_setsoffiles(0);
+        file_set->set_hash(0);
+        file_set->mutable_files(0)->set_name("rename_0");
+        a.SerializeToString(&out);
+    }
+}
+
+static void BM_TestTTestLazyDefaultWork(benchmark::State& state) {
+    const auto& env = *TSingletone<TEnvHolder>();
+
+    std::string out, input;
+    input.reserve(180*1024*1024);
+    out.reserve(180*1024*1024);
+
+    std::ifstream in("test.bin");
+    input.assign((std::istreambuf_iterator<char>(in) ),
+                (std::istreambuf_iterator<char>()    ) );
+
+    tutorial::TTestLazy a;
+
+    for (auto _ : state) {
+        a.ParseFromString(input);
+        auto* file_set = a.mutable_wraper()->Unpack()->mutable_setsoffiles(0);
+        file_set->set_hash(0);
+        file_set->mutable_files(0)->set_name("rename_0");
+        a.SerializeToString(&out);
+    }
+    
+    // Check
+    tutorial::TTest b;
+    b.ParseFromString(input);
+    auto* file_set = b.mutable_wraper()->mutable_setsoffiles(0);
+    file_set->set_hash(0);
+    file_set->mutable_files(0)->set_name("rename_0");
+    std::string out_b;
+    b.SerializeToString(&out_b);
+
+    ASSERT_EQ(out, out_b);
 }
 
 // Register the function as a benchmark
@@ -249,6 +312,9 @@ static void BM_TestFromString(benchmark::State& state) {
 //BENCHMARK(BM_CopyWithoutParsing)->Iterations(20);
 //BENCHMARK(BM_ParseFromString)->Iterations(20);
 //BENCHMARK(BM_ParseProtoFromFileWithArena)->Iterations(20);
+BENCHMARK(BM_LoadEnv)->Iterations(1);
 BENCHMARK(BM_TestLazyFromString)->Iterations(20);
 BENCHMARK(BM_TestFromString)->Iterations(20);
+BENCHMARK(BM_TestTTestDefaultWork)->Iterations(20);
+BENCHMARK(BM_TestTTestLazyDefaultWork)->Iterations(20);
 BENCHMARK_MAIN();
