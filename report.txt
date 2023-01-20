@@ -24,3 +24,13 @@ BM_TestTTestDefaultWork/iterations:20      578846144 ns    575695196 ns         
 BM_TestTTestLazyDefaultWork/iterations:20  652923572 ns    652103560 ns           20
 Copy 178439536bytes
 BM_Memcpy/iterations:20                     17953304 ns     17952199 ns           20
+------------------------------------------------------------------------------------
+Benchmark                                          Time             CPU   Iterations
+------------------------------------------------------------------------------------
+BM_LoadEnv/iterations:1                        0.000 ms        0.000 ms            0
+BM_TestLazyFromString/iterations:20             99.2 ms         99.2 ms           20
+BM_TestFromString/iterations:20                  391 ms          391 ms           20
+BM_TestTTestDefaultWork/iterations:20            508 ms          508 ms           20
+BM_TestTTestLazyDefaultWork/iterations:20        646 ms          645 ms           20
+Copy 178439536bytes
+BM_Memcpy/iterations:20                         21.7 ms         21.7 ms           20

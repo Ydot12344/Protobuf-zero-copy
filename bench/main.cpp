@@ -321,7 +321,7 @@ static void BM_Memcpy(benchmark::State& state) {
 
     char* out = new char[180*1024*1024];
 
-    std::cout << "Copy " << input.size() << "bytes" << std::endl;
+    std::cout << "Copy " << input.size() << " bytes" << std::endl;
 
     for (auto _ : state) {
         memcpy(out, input.data(), input.size());
@@ -338,10 +338,10 @@ static void BM_Memcpy(benchmark::State& state) {
 //BENCHMARK(BM_CopyWithoutParsing)->Iterations(20);
 //BENCHMARK(BM_ParseFromString)->Iterations(20);
 //BENCHMARK(BM_ParseProtoFromFileWithArena)->Iterations(20);
-BENCHMARK(BM_LoadEnv)->Iterations(1);
-BENCHMARK(BM_TestLazyFromString)->Iterations(20);
-BENCHMARK(BM_TestFromString)->Iterations(20);
-BENCHMARK(BM_TestTTestDefaultWork)->Iterations(20);
-BENCHMARK(BM_TestTTestLazyDefaultWork)->Iterations(20);
-BENCHMARK(BM_Memcpy)->Iterations(20);
+BENCHMARK(BM_LoadEnv)->Iterations(1)->Unit(benchmark::kMillisecond);
+BENCHMARK(BM_TestLazyFromString)->Iterations(20)->Unit(benchmark::kMillisecond);
+BENCHMARK(BM_TestFromString)->Iterations(20)->Unit(benchmark::kMillisecond);
+BENCHMARK(BM_TestTTestDefaultWork)->Iterations(20)->Unit(benchmark::kMillisecond);
+BENCHMARK(BM_TestTTestLazyDefaultWork)->Iterations(20)->Unit(benchmark::kMillisecond);
+BENCHMARK(BM_Memcpy)->Iterations(20)->Unit(benchmark::kMillisecond);
 BENCHMARK_MAIN();
