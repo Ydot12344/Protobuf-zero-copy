@@ -37,6 +37,6 @@ message TSubsourceResponse {
     repeated TFileSet responses = 1;
 }
 
-//message TSubsourceResponseLazy {
-//    repeated TFileSet responses = 1 //[lazy_pack = true];
-//}
+message TSubsourceResponseLazy {
+    repeated TFileSet responses = 1 [lazy_pack = true];
+}

@@ -126,8 +126,22 @@ struct TSubsourceResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TSubsourceResponseDefaultTypeInternal _TSubsourceResponse_default_instance_;
+PROTOBUF_CONSTEXPR TSubsourceResponseLazy::TSubsourceResponseLazy(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.responses_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct TSubsourceResponseLazyDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TSubsourceResponseLazyDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TSubsourceResponseLazyDefaultTypeInternal() {}
+  union {
+    TSubsourceResponseLazy _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TSubsourceResponseLazyDefaultTypeInternal _TSubsourceResponseLazy_default_instance_;
 }  // namespace NBench
-static ::_pb::Metadata file_level_metadata_messge_2eproto[7];
+static ::_pb::Metadata file_level_metadata_messge_2eproto[8];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_messge_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -209,6 +223,15 @@ const ::uint32_t TableStruct_messge_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::NBench::TSubsourceResponse, _impl_.responses_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::NBench::TSubsourceResponseLazy, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::NBench::TSubsourceResponseLazy, _impl_.responses_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -220,6 +243,7 @@ static const ::_pbi::MigrationSchema
         { 47, 56, -1, sizeof(::NBench::TTest)},
         { 57, -1, -1, sizeof(::NBench::TRepeatedWraper)},
         { 66, -1, -1, sizeof(::NBench::TSubsourceResponse)},
+        { 75, -1, -1, sizeof(::NBench::TSubsourceResponseLazy)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -230,6 +254,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::NBench::_TTest_default_instance_._instance,
     &::NBench::_TRepeatedWraper_default_instance_._instance,
     &::NBench::_TSubsourceResponse_default_instance_._instance,
+    &::NBench::_TSubsourceResponseLazy_default_instance_._instance,
 };
 const char descriptor_table_protodef_messge_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\014messge.proto\022\006NBench\"5\n\005TFile\022\017\n\007Weigh"
@@ -243,18 +268,20 @@ const char descriptor_table_protodef_messge_2eproto[] PROTOBUF_SECTION_VARIABLE(
     "per\"8\n\017TRepeatedWraper\022%\n\013SetsOfFiles\030\001 "
     "\003(\0132\020.NBench.TFileSet\"9\n\022TSubsourceRespo"
     "nse\022#\n\tresponses\030\001 \003(\0132\020.NBench.TFileSet"
+    "\"B\n\026TSubsourceResponseLazy\022(\n\tresponses\030"
+    "\001 \003(\0132\020.NBench.TFileSetB\003\200\001\001"
 };
 static ::absl::once_flag descriptor_table_messge_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_messge_2eproto = {
     false,
     false,
-    440,
+    508,
     descriptor_table_protodef_messge_2eproto,
     "messge.proto",
     &descriptor_table_messge_2eproto_once,
     nullptr,
     0,
-    7,
+    8,
     schemas,
     file_default_instances,
     TableStruct_messge_2eproto::offsets,
@@ -1916,6 +1943,199 @@ void TSubsourceResponse::InternalSwap(TSubsourceResponse* other) {
       &descriptor_table_messge_2eproto_getter, &descriptor_table_messge_2eproto_once,
       file_level_metadata_messge_2eproto[6]);
 }
+// ===================================================================
+
+class TSubsourceResponseLazy::_Internal {
+ public:
+};
+
+TSubsourceResponseLazy::TSubsourceResponseLazy(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:NBench.TSubsourceResponseLazy)
+}
+TSubsourceResponseLazy::TSubsourceResponseLazy(const TSubsourceResponseLazy& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  TSubsourceResponseLazy* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.responses_){from._impl_.responses_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:NBench.TSubsourceResponseLazy)
+}
+
+inline void TSubsourceResponseLazy::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.responses_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+TSubsourceResponseLazy::~TSubsourceResponseLazy() {
+  // @@protoc_insertion_point(destructor:NBench.TSubsourceResponseLazy)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void TSubsourceResponseLazy::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.responses_.~RepeatedPtrField();
+}
+
+void TSubsourceResponseLazy::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void TSubsourceResponseLazy::Clear() {
+// @@protoc_insertion_point(message_clear_start:NBench.TSubsourceResponseLazy)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.responses_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* TSubsourceResponseLazy::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .NBench.TFileSet responses = 1 [lazy_pack = true];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            _internal_add_responses()->InternalParse(ctx->GetBinaryMessage(&ptr));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+::uint8_t* TSubsourceResponseLazy::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+
+  // @@protoc_insertion_point(serialize_to_array_start:NBench.TSubsourceResponseLazy)
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .NBench.TFileSet responses = 1 [lazy_pack = true];
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_responses_size()); i < n; i++) {
+  target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+    InternalPreWriteMessage(1,
+      this->_internal_responses(i).GetCachedSize(), target, stream);
+  target = this->_internal_responses(i).Serialize(target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NBench.TSubsourceResponseLazy)
+  return target;
+}
+
+::size_t TSubsourceResponseLazy::ByteSizeLong() const {
+
+// @@protoc_insertion_point(message_byte_size_start:NBench.TSubsourceResponseLazy)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .NBench.TFileSet responses = 1 [lazy_pack = true];
+  total_size += 1UL * this->_internal_responses_size();
+  for (const auto& msg : this->_impl_.responses_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TSubsourceResponseLazy::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    TSubsourceResponseLazy::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TSubsourceResponseLazy::GetClassData() const { return &_class_data_; }
+
+
+void TSubsourceResponseLazy::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<TSubsourceResponseLazy*>(&to_msg);
+  auto& from = static_cast<const TSubsourceResponseLazy&>(from_msg);
+
+  // @@protoc_insertion_point(class_specific_merge_from_start:NBench.TSubsourceResponseLazy)
+  GOOGLE_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.responses_.MergeFrom(from._impl_.responses_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TSubsourceResponseLazy::CopyFrom(const TSubsourceResponseLazy& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:NBench.TSubsourceResponseLazy)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TSubsourceResponseLazy::IsInitialized() const {
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.responses_))
+    return false;
+  return true;
+}
+
+void TSubsourceResponseLazy::InternalSwap(TSubsourceResponseLazy* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.responses_.InternalSwap(&other->_impl_.responses_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata TSubsourceResponseLazy::GetMetadata() const {
+
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_messge_2eproto_getter, &descriptor_table_messge_2eproto_once,
+      file_level_metadata_messge_2eproto[7]);
+}
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace NBench
 PROTOBUF_NAMESPACE_OPEN
@@ -1946,6 +2166,10 @@ Arena::CreateMaybeMessage< ::NBench::TRepeatedWraper >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::NBench::TSubsourceResponse*
 Arena::CreateMaybeMessage< ::NBench::TSubsourceResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::NBench::TSubsourceResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::NBench::TSubsourceResponseLazy*
+Arena::CreateMaybeMessage< ::NBench::TSubsourceResponseLazy >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::NBench::TSubsourceResponseLazy >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 // @@protoc_insertion_point(global_scope)

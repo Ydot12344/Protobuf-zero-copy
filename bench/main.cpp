@@ -423,6 +423,35 @@ static void BM_ProxyConcatSubsources(benchmark::State& state) {
     CheckSubsources(result);
 }
 
+static void BM_ProxyConcatSubsourcesLazy(benchmark::State& state) {
+    const auto& env = *TSingletone<TEnvHolder>();
+
+    std::vector<std::string> data(env->SubsourceCnt);
+
+    for(size_t i = 0; i < data.size(); i++) {
+        data[i].reserve(env->SubsourceSize);
+        std::ifstream in(SUBSOURCE_BIN_PREFIX + std::to_string(i) + ".bin");
+        data[i].assign((std::istreambuf_iterator<char>(in)),
+                (std::istreambuf_iterator<char>()) );
+    }
+
+    std::string result;
+    result.reserve(env->SubsourceSize * env->SubsourceCnt);
+
+    NBench::TSubsourceResponseLazy response;
+
+    for (auto _ : state) {
+        response.Clear();
+        for (size_t i = 0; i < env->SubsourceCnt; i++) {
+            response.MergeFromString(data[i]);
+        }
+
+        result = response.SerializeAsString();
+    }
+
+    CheckSubsources(result);
+}
+
 // Register the function as a benchmark
 //BENCHMARK(BM_ParseProtoFromFile)->src/google/protobuf/lazy_packed_field.hterations(20);
 //BENCHMARK(BM_CopyWithoutParsing)->Iterations(20);
@@ -435,4 +464,5 @@ BENCHMARK(BM_TestFromString)->Iterations(20)->Unit(benchmark::kMillisecond);
 BENCHMARK(BM_TestTTestDefaultWork)->Iterations(20)->Unit(benchmark::kMillisecond);
 BENCHMARK(BM_TestTTestLazyDefaultWork)->Iterations(20)->Unit(benchmark::kMillisecond);
 BENCHMARK(BM_ProxyConcatSubsources)->Iterations(20)->Unit(benchmark::kMillisecond);
+BENCHMARK(BM_ProxyConcatSubsourcesLazy)->Iterations(20)->Unit(benchmark::kMillisecond);
 BENCHMARK_MAIN();

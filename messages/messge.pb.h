@@ -67,6 +67,9 @@ extern TReportDefaultTypeInternal _TReport_default_instance_;
 class TSubsourceResponse;
 struct TSubsourceResponseDefaultTypeInternal;
 extern TSubsourceResponseDefaultTypeInternal _TSubsourceResponse_default_instance_;
+class TSubsourceResponseLazy;
+struct TSubsourceResponseLazyDefaultTypeInternal;
+extern TSubsourceResponseLazyDefaultTypeInternal _TSubsourceResponseLazy_default_instance_;
 class TTest;
 struct TTestDefaultTypeInternal;
 extern TTestDefaultTypeInternal _TTest_default_instance_;
@@ -85,6 +88,8 @@ template <>
 ::NBench::TReport* Arena::CreateMaybeMessage<::NBench::TReport>(Arena*);
 template <>
 ::NBench::TSubsourceResponse* Arena::CreateMaybeMessage<::NBench::TSubsourceResponse>(Arena*);
+template <>
+::NBench::TSubsourceResponseLazy* Arena::CreateMaybeMessage<::NBench::TSubsourceResponseLazy>(Arena*);
 template <>
 ::NBench::TTest* Arena::CreateMaybeMessage<::NBench::TTest>(Arena*);
 template <>
@@ -1354,6 +1359,169 @@ class TSubsourceResponse final :
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_messge_2eproto;
+};// -------------------------------------------------------------------
+
+class TSubsourceResponseLazy final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NBench.TSubsourceResponseLazy) */ {
+ public:
+  inline TSubsourceResponseLazy() : TSubsourceResponseLazy(nullptr) {}
+  ~TSubsourceResponseLazy() override;
+  explicit PROTOBUF_CONSTEXPR TSubsourceResponseLazy(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TSubsourceResponseLazy(const TSubsourceResponseLazy& from);
+  TSubsourceResponseLazy(TSubsourceResponseLazy&& from) noexcept
+    : TSubsourceResponseLazy() {
+    *this = ::std::move(from);
+  }
+
+  inline TSubsourceResponseLazy& operator=(const TSubsourceResponseLazy& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TSubsourceResponseLazy& operator=(TSubsourceResponseLazy&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TSubsourceResponseLazy& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TSubsourceResponseLazy* internal_default_instance() {
+    return reinterpret_cast<const TSubsourceResponseLazy*>(
+               &_TSubsourceResponseLazy_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(TSubsourceResponseLazy& a, TSubsourceResponseLazy& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TSubsourceResponseLazy* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TSubsourceResponseLazy* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TSubsourceResponseLazy* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TSubsourceResponseLazy>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TSubsourceResponseLazy& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TSubsourceResponseLazy& from) {
+    TSubsourceResponseLazy::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TSubsourceResponseLazy* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "NBench.TSubsourceResponseLazy";
+  }
+  protected:
+  explicit TSubsourceResponseLazy(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kResponsesFieldNumber = 1,
+  };
+  // repeated .NBench.TFileSet responses = 1 [lazy_pack = true];
+  int responses_size() const;
+  private:
+  int _internal_responses_size() const;
+  public:
+  void clear_responses();
+  TLazyField<::NBench::TFileSet>* mutable_responses(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< TLazyField<::NBench::TFileSet> >*
+      mutable_responses();
+  private:
+  const TLazyField<::NBench::TFileSet>& _internal_responses(int index) const;
+  TLazyField<::NBench::TFileSet>* _internal_add_responses();
+  public:
+  const TLazyField<::NBench::TFileSet>& responses(int index) const;
+  TLazyField<::NBench::TFileSet>* add_responses();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< TLazyField<::NBench::TFileSet> >&
+      responses() const;
+
+  // @@protoc_insertion_point(class_scope:NBench.TSubsourceResponseLazy)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< TLazyField<::NBench::TFileSet> > responses_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_messge_2eproto;
 };
 // ===================================================================
 
@@ -2040,6 +2208,50 @@ inline ::NBench::TFileSet* TSubsourceResponse::add_responses() {
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >&
 TSubsourceResponse::responses() const {
   // @@protoc_insertion_point(field_list:NBench.TSubsourceResponse.responses)
+  return _impl_.responses_;
+}
+
+// -------------------------------------------------------------------
+
+// TSubsourceResponseLazy
+
+// repeated .NBench.TFileSet responses = 1 [lazy_pack = true];
+inline int TSubsourceResponseLazy::_internal_responses_size() const {
+  return _impl_.responses_.size();
+}
+inline int TSubsourceResponseLazy::responses_size() const {
+  return _internal_responses_size();
+}
+inline void TSubsourceResponseLazy::clear_responses() {
+  _impl_.responses_.Clear();
+}
+inline TLazyField<::NBench::TFileSet>* TSubsourceResponseLazy::mutable_responses(int index) {
+  // @@protoc_insertion_point(field_mutable:NBench.TSubsourceResponseLazy.responses)
+  return _impl_.responses_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< TLazyField<::NBench::TFileSet> >*
+TSubsourceResponseLazy::mutable_responses() {
+  // @@protoc_insertion_point(field_mutable_list:NBench.TSubsourceResponseLazy.responses)
+  return &_impl_.responses_;
+}
+inline const TLazyField<::NBench::TFileSet>& TSubsourceResponseLazy::_internal_responses(int index) const {
+  return _impl_.responses_.Get(index);
+}
+inline const TLazyField<::NBench::TFileSet>& TSubsourceResponseLazy::responses(int index) const {
+  // @@protoc_insertion_point(field_get:NBench.TSubsourceResponseLazy.responses)
+  return _internal_responses(index);
+}
+inline TLazyField<::NBench::TFileSet>* TSubsourceResponseLazy::_internal_add_responses() {
+  return _impl_.responses_.Add();
+}
+inline TLazyField<::NBench::TFileSet>* TSubsourceResponseLazy::add_responses() {
+  TLazyField<::NBench::TFileSet>* _add = _internal_add_responses();
+  // @@protoc_insertion_point(field_add:NBench.TSubsourceResponseLazy.responses)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< TLazyField<::NBench::TFileSet> >&
+TSubsourceResponseLazy::responses() const {
+  // @@protoc_insertion_point(field_list:NBench.TSubsourceResponseLazy.responses)
   return _impl_.responses_;
 }
 

@@ -47,3 +47,18 @@ BM_TestFromString/iterations:20                  374 ms          374 ms         
 BM_TestTTestDefaultWork/iterations:20            501 ms          501 ms           20
 BM_TestTTestLazyDefaultWork/iterations:20        587 ms          586 ms           20
 BM_ProxyConcatSubsources/iterations:20           575 ms          575 ms           20
+
+------------------------------------------------------------------------------------
+Big proto size: 170.17Mb
+Small proto size: 17.02Mb
+-------------------------------------------------------------------------------------
+Benchmark                                           Time             CPU   Iterations
+-------------------------------------------------------------------------------------
+BM_LoadEnv/iterations:1                         0.000 ms        0.000 ms            0
+BM_Memcpy/iterations:20                          22.1 ms         21.3 ms           20
+BM_TestLazyFromString/iterations:20               105 ms          104 ms           20
+BM_TestFromString/iterations:20                   399 ms          398 ms           20
+BM_TestTTestDefaultWork/iterations:20             525 ms          525 ms           20
+BM_TestTTestLazyDefaultWork/iterations:20         675 ms          674 ms           20
+BM_ProxyConcatSubsources/iterations:20            725 ms          670 ms           20
+BM_ProxyConcatSubsourcesLazy/iterations:20        140 ms          122 ms           20
