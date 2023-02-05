@@ -2,7 +2,7 @@
 
 namespace NGenProto {
 
-using namespace tutorial;
+using namespace NBench;
 
 TReport GenReport(const TGenOpts& opts) {
     srand(opts.Seed);
@@ -40,6 +40,15 @@ TTest GenTest(const TGenOpts& opts) {
     TTest res;
     GenRepeatedWraper(res.mutable_wraper(), opts);
     return res;
+}
+
+TSubsourceResponse GenSubsourceResponse(const TGenOpts& opts) {
+    TSubsourceResponse sub;
+    for (size_t i = 0; i < opts.SetsOfFilesCount; i++) {
+        GenFileSet(sub.add_responses(), opts);
+    }
+
+    return sub;
 }
 
 void GenFile(TFile* val, const TGenOpts& opts) {

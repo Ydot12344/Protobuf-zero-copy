@@ -1,12 +1,15 @@
 [submodule "FlameGraph"]
-	path = FlameGraph
+	path = third_party/FlameGraph
 	url = git@github.com:brendangregg/FlameGraph.git
 [submodule "googletest"]
-	path = googletest
+	path = third_party/googletest
 	url = git@github.com:google/googletest.git
 [submodule "benchmark"]
-	path = benchmark
+	path = third_party/benchmark
 	url = git@github.com:google/benchmark.git
 [submodule "protobuf"]
-	path = protobuf
+	path = third_party/protobuf
 	url = git@github.com:Ydot12344/protobuf.git
+[submodule "json"]
+	path = third_party/json
+	url = git@github.com:nlohmann/json.git

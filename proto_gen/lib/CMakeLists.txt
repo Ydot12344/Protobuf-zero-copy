@@ -12,4 +12,4 @@ target_include_directories(
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE protobuf::libprotobuf)
+target_link_libraries(${PROJECT_NAME} PRIVATE protobuf::libprotobuf nlohmann_json::nlohmann_json)

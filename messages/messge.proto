@@ -1,6 +1,6 @@
 syntax = "proto2";
 
-package tutorial;
+package NBench;
 
 message TFile {
     repeated float Weights = 1;
@@ -30,3 +30,13 @@ message TTest {
 message TRepeatedWraper {
     repeated TFileSet SetsOfFiles = 1;
 }
+
+// Test repeated lazy 
+
+message TSubsourceResponse {
+    repeated TFileSet responses = 1;
+}
+
+//message TSubsourceResponseLazy {
+//    repeated TFileSet responses = 1 //[lazy_pack = true];
+//}

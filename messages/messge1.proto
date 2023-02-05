@@ -26,3 +26,13 @@ message TTest {
 message TRepeatedWraper {
     repeated TFileSet SetsOfFiles = 1;
 }
+
+// Test repeated lazy 
+
+message TSubsourceResponse {
+    repeated TFileSet responses = 1;
+}
+
+message TSubsourceResponse {
+    repeated TFileSet responses = 1; []
+}

@@ -51,7 +51,7 @@ struct TableStruct_messge_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable
     descriptor_table_messge_2eproto;
-namespace tutorial {
+namespace NBench {
 class TFile;
 struct TFileDefaultTypeInternal;
 extern TFileDefaultTypeInternal _TFile_default_instance_;
@@ -64,29 +64,34 @@ extern TRepeatedWraperDefaultTypeInternal _TRepeatedWraper_default_instance_;
 class TReport;
 struct TReportDefaultTypeInternal;
 extern TReportDefaultTypeInternal _TReport_default_instance_;
+class TSubsourceResponse;
+struct TSubsourceResponseDefaultTypeInternal;
+extern TSubsourceResponseDefaultTypeInternal _TSubsourceResponse_default_instance_;
 class TTest;
 struct TTestDefaultTypeInternal;
 extern TTestDefaultTypeInternal _TTest_default_instance_;
 class TTestLazy;
 struct TTestLazyDefaultTypeInternal;
 extern TTestLazyDefaultTypeInternal _TTestLazy_default_instance_;
-}  // namespace tutorial
+}  // namespace NBench
 PROTOBUF_NAMESPACE_OPEN
 template <>
-::tutorial::TFile* Arena::CreateMaybeMessage<::tutorial::TFile>(Arena*);
+::NBench::TFile* Arena::CreateMaybeMessage<::NBench::TFile>(Arena*);
 template <>
-::tutorial::TFileSet* Arena::CreateMaybeMessage<::tutorial::TFileSet>(Arena*);
+::NBench::TFileSet* Arena::CreateMaybeMessage<::NBench::TFileSet>(Arena*);
 template <>
-::tutorial::TRepeatedWraper* Arena::CreateMaybeMessage<::tutorial::TRepeatedWraper>(Arena*);
+::NBench::TRepeatedWraper* Arena::CreateMaybeMessage<::NBench::TRepeatedWraper>(Arena*);
 template <>
-::tutorial::TReport* Arena::CreateMaybeMessage<::tutorial::TReport>(Arena*);
+::NBench::TReport* Arena::CreateMaybeMessage<::NBench::TReport>(Arena*);
 template <>
-::tutorial::TTest* Arena::CreateMaybeMessage<::tutorial::TTest>(Arena*);
+::NBench::TSubsourceResponse* Arena::CreateMaybeMessage<::NBench::TSubsourceResponse>(Arena*);
 template <>
-::tutorial::TTestLazy* Arena::CreateMaybeMessage<::tutorial::TTestLazy>(Arena*);
+::NBench::TTest* Arena::CreateMaybeMessage<::NBench::TTest>(Arena*);
+template <>
+::NBench::TTestLazy* Arena::CreateMaybeMessage<::NBench::TTestLazy>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
-namespace tutorial {
+namespace NBench {
 
 // ===================================================================
 
@@ -94,7 +99,7 @@ namespace tutorial {
 // -------------------------------------------------------------------
 
 class TFile final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:tutorial.TFile) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NBench.TFile) */ {
  public:
   inline TFile() : TFile(nullptr) {}
   ~TFile() override;
@@ -204,7 +209,7 @@ class TFile final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "tutorial.TFile";
+    return "NBench.TFile";
   }
   protected:
   explicit TFile(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -287,7 +292,7 @@ class TFile final :
   std::string* _internal_mutable_name();
   public:
 
-  // @@protoc_insertion_point(class_scope:tutorial.TFile)
+  // @@protoc_insertion_point(class_scope:NBench.TFile)
  private:
   class _Internal;
 
@@ -306,7 +311,7 @@ class TFile final :
 };// -------------------------------------------------------------------
 
 class TFileSet final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:tutorial.TFileSet) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NBench.TFileSet) */ {
  public:
   inline TFileSet() : TFileSet(nullptr) {}
   ~TFileSet() override;
@@ -416,7 +421,7 @@ class TFileSet final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "tutorial.TFileSet";
+    return "NBench.TFileSet";
   }
   protected:
   explicit TFileSet(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -436,22 +441,22 @@ class TFileSet final :
     kFilesFieldNumber = 1,
     kHashFieldNumber = 2,
   };
-  // repeated .tutorial.TFile Files = 1;
+  // repeated .NBench.TFile Files = 1;
   int files_size() const;
   private:
   int _internal_files_size() const;
   public:
   void clear_files();
-  ::tutorial::TFile* mutable_files(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFile >*
+  ::NBench::TFile* mutable_files(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFile >*
       mutable_files();
   private:
-  const ::tutorial::TFile& _internal_files(int index) const;
-  ::tutorial::TFile* _internal_add_files();
+  const ::NBench::TFile& _internal_files(int index) const;
+  ::NBench::TFile* _internal_add_files();
   public:
-  const ::tutorial::TFile& files(int index) const;
-  ::tutorial::TFile* add_files();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFile >&
+  const ::NBench::TFile& files(int index) const;
+  ::NBench::TFile* add_files();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFile >&
       files() const;
 
   // required int64 Hash = 2;
@@ -467,7 +472,7 @@ class TFileSet final :
   void _internal_set_hash(::int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:tutorial.TFileSet)
+  // @@protoc_insertion_point(class_scope:NBench.TFileSet)
  private:
   class _Internal;
 
@@ -477,7 +482,7 @@ class TFileSet final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFile > files_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFile > files_;
     ::int64_t hash_;
   };
   union { Impl_ _impl_; };
@@ -485,7 +490,7 @@ class TFileSet final :
 };// -------------------------------------------------------------------
 
 class TReport final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:tutorial.TReport) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NBench.TReport) */ {
  public:
   inline TReport() : TReport(nullptr) {}
   ~TReport() override;
@@ -595,7 +600,7 @@ class TReport final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "tutorial.TReport";
+    return "NBench.TReport";
   }
   protected:
   explicit TReport(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -662,25 +667,25 @@ class TReport final :
   std::string* _internal_add_strings();
   public:
 
-  // repeated .tutorial.TFileSet SetsOfFiles = 3;
+  // repeated .NBench.TFileSet SetsOfFiles = 3;
   int setsoffiles_size() const;
   private:
   int _internal_setsoffiles_size() const;
   public:
   void clear_setsoffiles();
-  ::tutorial::TFileSet* mutable_setsoffiles(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFileSet >*
+  ::NBench::TFileSet* mutable_setsoffiles(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >*
       mutable_setsoffiles();
   private:
-  const ::tutorial::TFileSet& _internal_setsoffiles(int index) const;
-  ::tutorial::TFileSet* _internal_add_setsoffiles();
+  const ::NBench::TFileSet& _internal_setsoffiles(int index) const;
+  ::NBench::TFileSet* _internal_add_setsoffiles();
   public:
-  const ::tutorial::TFileSet& setsoffiles(int index) const;
-  ::tutorial::TFileSet* add_setsoffiles();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFileSet >&
+  const ::NBench::TFileSet& setsoffiles(int index) const;
+  ::NBench::TFileSet* add_setsoffiles();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >&
       setsoffiles() const;
 
-  // @@protoc_insertion_point(class_scope:tutorial.TReport)
+  // @@protoc_insertion_point(class_scope:NBench.TReport)
  private:
   class _Internal;
 
@@ -690,7 +695,7 @@ class TReport final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t > nums_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> strings_;
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFileSet > setsoffiles_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet > setsoffiles_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -698,7 +703,7 @@ class TReport final :
 };// -------------------------------------------------------------------
 
 class TTestLazy final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:tutorial.TTestLazy) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NBench.TTestLazy) */ {
  public:
   inline TTestLazy() : TTestLazy(nullptr) {}
   ~TTestLazy() override;
@@ -808,7 +813,7 @@ class TTestLazy final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "tutorial.TTestLazy";
+    return "NBench.TTestLazy";
   }
   protected:
   explicit TTestLazy(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -827,25 +832,25 @@ class TTestLazy final :
   enum : int {
     kWraperFieldNumber = 1,
   };
-  // required .tutorial.TRepeatedWraper wraper = 1 [lazy_pack = true];
+  // required .NBench.TRepeatedWraper wraper = 1 [lazy_pack = true];
   bool has_wraper() const;
   private:
   bool _internal_has_wraper() const;
   public:
   void clear_wraper();
-  const TLazyField<::tutorial::TRepeatedWraper>& wraper() const;
-  PROTOBUF_NODISCARD TLazyField<::tutorial::TRepeatedWraper>* release_wraper();
-  TLazyField<::tutorial::TRepeatedWraper>* mutable_wraper();
-  void set_allocated_wraper(TLazyField<::tutorial::TRepeatedWraper>* wraper);
+  const TLazyField<::NBench::TRepeatedWraper>& wraper() const;
+  PROTOBUF_NODISCARD TLazyField<::NBench::TRepeatedWraper>* release_wraper();
+  TLazyField<::NBench::TRepeatedWraper>* mutable_wraper();
+  void set_allocated_wraper(TLazyField<::NBench::TRepeatedWraper>* wraper);
   private:
-  const TLazyField<::tutorial::TRepeatedWraper>& _internal_wraper() const;
-  TLazyField<::tutorial::TRepeatedWraper>* _internal_mutable_wraper();
+  const TLazyField<::NBench::TRepeatedWraper>& _internal_wraper() const;
+  TLazyField<::NBench::TRepeatedWraper>* _internal_mutable_wraper();
   public:
   void unsafe_arena_set_allocated_wraper(
-      TLazyField<::tutorial::TRepeatedWraper>* wraper);
-  TLazyField<::tutorial::TRepeatedWraper>* unsafe_arena_release_wraper();
+      TLazyField<::NBench::TRepeatedWraper>* wraper);
+  TLazyField<::NBench::TRepeatedWraper>* unsafe_arena_release_wraper();
 
-  // @@protoc_insertion_point(class_scope:tutorial.TTestLazy)
+  // @@protoc_insertion_point(class_scope:NBench.TTestLazy)
  private:
   class _Internal;
 
@@ -855,14 +860,14 @@ class TTestLazy final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-    TLazyField<::tutorial::TRepeatedWraper>* wraper_;
+    TLazyField<::NBench::TRepeatedWraper>* wraper_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_messge_2eproto;
 };// -------------------------------------------------------------------
 
 class TTest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:tutorial.TTest) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NBench.TTest) */ {
  public:
   inline TTest() : TTest(nullptr) {}
   ~TTest() override;
@@ -972,7 +977,7 @@ class TTest final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "tutorial.TTest";
+    return "NBench.TTest";
   }
   protected:
   explicit TTest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -991,25 +996,25 @@ class TTest final :
   enum : int {
     kWraperFieldNumber = 1,
   };
-  // required .tutorial.TRepeatedWraper wraper = 1;
+  // required .NBench.TRepeatedWraper wraper = 1;
   bool has_wraper() const;
   private:
   bool _internal_has_wraper() const;
   public:
   void clear_wraper();
-  const ::tutorial::TRepeatedWraper& wraper() const;
-  PROTOBUF_NODISCARD ::tutorial::TRepeatedWraper* release_wraper();
-  ::tutorial::TRepeatedWraper* mutable_wraper();
-  void set_allocated_wraper(::tutorial::TRepeatedWraper* wraper);
+  const ::NBench::TRepeatedWraper& wraper() const;
+  PROTOBUF_NODISCARD ::NBench::TRepeatedWraper* release_wraper();
+  ::NBench::TRepeatedWraper* mutable_wraper();
+  void set_allocated_wraper(::NBench::TRepeatedWraper* wraper);
   private:
-  const ::tutorial::TRepeatedWraper& _internal_wraper() const;
-  ::tutorial::TRepeatedWraper* _internal_mutable_wraper();
+  const ::NBench::TRepeatedWraper& _internal_wraper() const;
+  ::NBench::TRepeatedWraper* _internal_mutable_wraper();
   public:
   void unsafe_arena_set_allocated_wraper(
-      ::tutorial::TRepeatedWraper* wraper);
-  ::tutorial::TRepeatedWraper* unsafe_arena_release_wraper();
+      ::NBench::TRepeatedWraper* wraper);
+  ::NBench::TRepeatedWraper* unsafe_arena_release_wraper();
 
-  // @@protoc_insertion_point(class_scope:tutorial.TTest)
+  // @@protoc_insertion_point(class_scope:NBench.TTest)
  private:
   class _Internal;
 
@@ -1019,14 +1024,14 @@ class TTest final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-    ::tutorial::TRepeatedWraper* wraper_;
+    ::NBench::TRepeatedWraper* wraper_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_messge_2eproto;
 };// -------------------------------------------------------------------
 
 class TRepeatedWraper final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:tutorial.TRepeatedWraper) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NBench.TRepeatedWraper) */ {
  public:
   inline TRepeatedWraper() : TRepeatedWraper(nullptr) {}
   ~TRepeatedWraper() override;
@@ -1136,7 +1141,7 @@ class TRepeatedWraper final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "tutorial.TRepeatedWraper";
+    return "NBench.TRepeatedWraper";
   }
   protected:
   explicit TRepeatedWraper(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1155,25 +1160,25 @@ class TRepeatedWraper final :
   enum : int {
     kSetsOfFilesFieldNumber = 1,
   };
-  // repeated .tutorial.TFileSet SetsOfFiles = 1;
+  // repeated .NBench.TFileSet SetsOfFiles = 1;
   int setsoffiles_size() const;
   private:
   int _internal_setsoffiles_size() const;
   public:
   void clear_setsoffiles();
-  ::tutorial::TFileSet* mutable_setsoffiles(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFileSet >*
+  ::NBench::TFileSet* mutable_setsoffiles(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >*
       mutable_setsoffiles();
   private:
-  const ::tutorial::TFileSet& _internal_setsoffiles(int index) const;
-  ::tutorial::TFileSet* _internal_add_setsoffiles();
+  const ::NBench::TFileSet& _internal_setsoffiles(int index) const;
+  ::NBench::TFileSet* _internal_add_setsoffiles();
   public:
-  const ::tutorial::TFileSet& setsoffiles(int index) const;
-  ::tutorial::TFileSet* add_setsoffiles();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFileSet >&
+  const ::NBench::TFileSet& setsoffiles(int index) const;
+  ::NBench::TFileSet* add_setsoffiles();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >&
       setsoffiles() const;
 
-  // @@protoc_insertion_point(class_scope:tutorial.TRepeatedWraper)
+  // @@protoc_insertion_point(class_scope:NBench.TRepeatedWraper)
  private:
   class _Internal;
 
@@ -1181,7 +1186,170 @@ class TRepeatedWraper final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFileSet > setsoffiles_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet > setsoffiles_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_messge_2eproto;
+};// -------------------------------------------------------------------
+
+class TSubsourceResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NBench.TSubsourceResponse) */ {
+ public:
+  inline TSubsourceResponse() : TSubsourceResponse(nullptr) {}
+  ~TSubsourceResponse() override;
+  explicit PROTOBUF_CONSTEXPR TSubsourceResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TSubsourceResponse(const TSubsourceResponse& from);
+  TSubsourceResponse(TSubsourceResponse&& from) noexcept
+    : TSubsourceResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline TSubsourceResponse& operator=(const TSubsourceResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TSubsourceResponse& operator=(TSubsourceResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TSubsourceResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TSubsourceResponse* internal_default_instance() {
+    return reinterpret_cast<const TSubsourceResponse*>(
+               &_TSubsourceResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(TSubsourceResponse& a, TSubsourceResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TSubsourceResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TSubsourceResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TSubsourceResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TSubsourceResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TSubsourceResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TSubsourceResponse& from) {
+    TSubsourceResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TSubsourceResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "NBench.TSubsourceResponse";
+  }
+  protected:
+  explicit TSubsourceResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kResponsesFieldNumber = 1,
+  };
+  // repeated .NBench.TFileSet responses = 1;
+  int responses_size() const;
+  private:
+  int _internal_responses_size() const;
+  public:
+  void clear_responses();
+  ::NBench::TFileSet* mutable_responses(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >*
+      mutable_responses();
+  private:
+  const ::NBench::TFileSet& _internal_responses(int index) const;
+  ::NBench::TFileSet* _internal_add_responses();
+  public:
+  const ::NBench::TFileSet& responses(int index) const;
+  ::NBench::TFileSet* add_responses();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >&
+      responses() const;
+
+  // @@protoc_insertion_point(class_scope:NBench.TSubsourceResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet > responses_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1217,19 +1385,19 @@ inline float TFile::_internal_weights(int index) const {
   return _impl_.weights_.Get(index);
 }
 inline float TFile::weights(int index) const {
-  // @@protoc_insertion_point(field_get:tutorial.TFile.Weights)
+  // @@protoc_insertion_point(field_get:NBench.TFile.Weights)
   return _internal_weights(index);
 }
 inline void TFile::set_weights(int index, float value) {
   _impl_.weights_.Set(index, value);
-  // @@protoc_insertion_point(field_set:tutorial.TFile.Weights)
+  // @@protoc_insertion_point(field_set:NBench.TFile.Weights)
 }
 inline void TFile::_internal_add_weights(float value) {
   _impl_.weights_.Add(value);
 }
 inline void TFile::add_weights(float value) {
   _internal_add_weights(value);
-  // @@protoc_insertion_point(field_add:tutorial.TFile.Weights)
+  // @@protoc_insertion_point(field_add:NBench.TFile.Weights)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
 TFile::_internal_weights() const {
@@ -1237,7 +1405,7 @@ TFile::_internal_weights() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
 TFile::weights() const {
-  // @@protoc_insertion_point(field_list:tutorial.TFile.Weights)
+  // @@protoc_insertion_point(field_list:NBench.TFile.Weights)
   return _internal_weights();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
@@ -1246,7 +1414,7 @@ TFile::_internal_mutable_weights() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
 TFile::mutable_weights() {
-  // @@protoc_insertion_point(field_mutable_list:tutorial.TFile.Weights)
+  // @@protoc_insertion_point(field_mutable_list:NBench.TFile.Weights)
   return _internal_mutable_weights();
 }
 
@@ -1263,7 +1431,7 @@ inline void TFile::clear_name() {
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 inline const std::string& TFile::name() const {
-  // @@protoc_insertion_point(field_get:tutorial.TFile.Name)
+  // @@protoc_insertion_point(field_get:NBench.TFile.Name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -1271,11 +1439,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void TFile::set_name(ArgT0&& arg0, ArgT... args) {
  _impl_._has_bits_[0] |= 0x00000001u;
  _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:tutorial.TFile.Name)
+  // @@protoc_insertion_point(field_set:NBench.TFile.Name)
 }
 inline std::string* TFile::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:tutorial.TFile.Name)
+  // @@protoc_insertion_point(field_mutable:NBench.TFile.Name)
   return _s;
 }
 inline const std::string& TFile::_internal_name() const {
@@ -1290,7 +1458,7 @@ inline std::string* TFile::_internal_mutable_name() {
   return _impl_.name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* TFile::release_name() {
-  // @@protoc_insertion_point(field_release:tutorial.TFile.Name)
+  // @@protoc_insertion_point(field_release:NBench.TFile.Name)
   if (!_internal_has_name()) {
     return nullptr;
   }
@@ -1313,7 +1481,7 @@ inline void TFile::set_allocated_name(std::string* name) {
     _impl_.name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:tutorial.TFile.Name)
+  // @@protoc_insertion_point(field_set_allocated:NBench.TFile.Name)
 }
 
 // repeated int32 Hosts = 3;
@@ -1330,19 +1498,19 @@ inline ::int32_t TFile::_internal_hosts(int index) const {
   return _impl_.hosts_.Get(index);
 }
 inline ::int32_t TFile::hosts(int index) const {
-  // @@protoc_insertion_point(field_get:tutorial.TFile.Hosts)
+  // @@protoc_insertion_point(field_get:NBench.TFile.Hosts)
   return _internal_hosts(index);
 }
 inline void TFile::set_hosts(int index, ::int32_t value) {
   _impl_.hosts_.Set(index, value);
-  // @@protoc_insertion_point(field_set:tutorial.TFile.Hosts)
+  // @@protoc_insertion_point(field_set:NBench.TFile.Hosts)
 }
 inline void TFile::_internal_add_hosts(::int32_t value) {
   _impl_.hosts_.Add(value);
 }
 inline void TFile::add_hosts(::int32_t value) {
   _internal_add_hosts(value);
-  // @@protoc_insertion_point(field_add:tutorial.TFile.Hosts)
+  // @@protoc_insertion_point(field_add:NBench.TFile.Hosts)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t >&
 TFile::_internal_hosts() const {
@@ -1350,7 +1518,7 @@ TFile::_internal_hosts() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t >&
 TFile::hosts() const {
-  // @@protoc_insertion_point(field_list:tutorial.TFile.Hosts)
+  // @@protoc_insertion_point(field_list:NBench.TFile.Hosts)
   return _internal_hosts();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t >*
@@ -1359,7 +1527,7 @@ TFile::_internal_mutable_hosts() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t >*
 TFile::mutable_hosts() {
-  // @@protoc_insertion_point(field_mutable_list:tutorial.TFile.Hosts)
+  // @@protoc_insertion_point(field_mutable_list:NBench.TFile.Hosts)
   return _internal_mutable_hosts();
 }
 
@@ -1367,7 +1535,7 @@ TFile::mutable_hosts() {
 
 // TFileSet
 
-// repeated .tutorial.TFile Files = 1;
+// repeated .NBench.TFile Files = 1;
 inline int TFileSet::_internal_files_size() const {
   return _impl_.files_.size();
 }
@@ -1377,33 +1545,33 @@ inline int TFileSet::files_size() const {
 inline void TFileSet::clear_files() {
   _impl_.files_.Clear();
 }
-inline ::tutorial::TFile* TFileSet::mutable_files(int index) {
-  // @@protoc_insertion_point(field_mutable:tutorial.TFileSet.Files)
+inline ::NBench::TFile* TFileSet::mutable_files(int index) {
+  // @@protoc_insertion_point(field_mutable:NBench.TFileSet.Files)
   return _impl_.files_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFile >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFile >*
 TFileSet::mutable_files() {
-  // @@protoc_insertion_point(field_mutable_list:tutorial.TFileSet.Files)
+  // @@protoc_insertion_point(field_mutable_list:NBench.TFileSet.Files)
   return &_impl_.files_;
 }
-inline const ::tutorial::TFile& TFileSet::_internal_files(int index) const {
+inline const ::NBench::TFile& TFileSet::_internal_files(int index) const {
   return _impl_.files_.Get(index);
 }
-inline const ::tutorial::TFile& TFileSet::files(int index) const {
-  // @@protoc_insertion_point(field_get:tutorial.TFileSet.Files)
+inline const ::NBench::TFile& TFileSet::files(int index) const {
+  // @@protoc_insertion_point(field_get:NBench.TFileSet.Files)
   return _internal_files(index);
 }
-inline ::tutorial::TFile* TFileSet::_internal_add_files() {
+inline ::NBench::TFile* TFileSet::_internal_add_files() {
   return _impl_.files_.Add();
 }
-inline ::tutorial::TFile* TFileSet::add_files() {
-  ::tutorial::TFile* _add = _internal_add_files();
-  // @@protoc_insertion_point(field_add:tutorial.TFileSet.Files)
+inline ::NBench::TFile* TFileSet::add_files() {
+  ::NBench::TFile* _add = _internal_add_files();
+  // @@protoc_insertion_point(field_add:NBench.TFileSet.Files)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFile >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFile >&
 TFileSet::files() const {
-  // @@protoc_insertion_point(field_list:tutorial.TFileSet.Files)
+  // @@protoc_insertion_point(field_list:NBench.TFileSet.Files)
   return _impl_.files_;
 }
 
@@ -1423,7 +1591,7 @@ inline ::int64_t TFileSet::_internal_hash() const {
   return _impl_.hash_;
 }
 inline ::int64_t TFileSet::hash() const {
-  // @@protoc_insertion_point(field_get:tutorial.TFileSet.Hash)
+  // @@protoc_insertion_point(field_get:NBench.TFileSet.Hash)
   return _internal_hash();
 }
 inline void TFileSet::_internal_set_hash(::int64_t value) {
@@ -1432,7 +1600,7 @@ inline void TFileSet::_internal_set_hash(::int64_t value) {
 }
 inline void TFileSet::set_hash(::int64_t value) {
   _internal_set_hash(value);
-  // @@protoc_insertion_point(field_set:tutorial.TFileSet.Hash)
+  // @@protoc_insertion_point(field_set:NBench.TFileSet.Hash)
 }
 
 // -------------------------------------------------------------------
@@ -1453,19 +1621,19 @@ inline ::int32_t TReport::_internal_nums(int index) const {
   return _impl_.nums_.Get(index);
 }
 inline ::int32_t TReport::nums(int index) const {
-  // @@protoc_insertion_point(field_get:tutorial.TReport.Nums)
+  // @@protoc_insertion_point(field_get:NBench.TReport.Nums)
   return _internal_nums(index);
 }
 inline void TReport::set_nums(int index, ::int32_t value) {
   _impl_.nums_.Set(index, value);
-  // @@protoc_insertion_point(field_set:tutorial.TReport.Nums)
+  // @@protoc_insertion_point(field_set:NBench.TReport.Nums)
 }
 inline void TReport::_internal_add_nums(::int32_t value) {
   _impl_.nums_.Add(value);
 }
 inline void TReport::add_nums(::int32_t value) {
   _internal_add_nums(value);
-  // @@protoc_insertion_point(field_add:tutorial.TReport.Nums)
+  // @@protoc_insertion_point(field_add:NBench.TReport.Nums)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t >&
 TReport::_internal_nums() const {
@@ -1473,7 +1641,7 @@ TReport::_internal_nums() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t >&
 TReport::nums() const {
-  // @@protoc_insertion_point(field_list:tutorial.TReport.Nums)
+  // @@protoc_insertion_point(field_list:NBench.TReport.Nums)
   return _internal_nums();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t >*
@@ -1482,7 +1650,7 @@ TReport::_internal_mutable_nums() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t >*
 TReport::mutable_nums() {
-  // @@protoc_insertion_point(field_mutable_list:tutorial.TReport.Nums)
+  // @@protoc_insertion_point(field_mutable_list:NBench.TReport.Nums)
   return _internal_mutable_nums();
 }
 
@@ -1498,68 +1666,68 @@ inline void TReport::clear_strings() {
 }
 inline std::string* TReport::add_strings() {
   std::string* _s = _internal_add_strings();
-  // @@protoc_insertion_point(field_add_mutable:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_add_mutable:NBench.TReport.Strings)
   return _s;
 }
 inline const std::string& TReport::_internal_strings(int index) const {
   return _impl_.strings_.Get(index);
 }
 inline const std::string& TReport::strings(int index) const {
-  // @@protoc_insertion_point(field_get:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_get:NBench.TReport.Strings)
   return _internal_strings(index);
 }
 inline std::string* TReport::mutable_strings(int index) {
-  // @@protoc_insertion_point(field_mutable:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_mutable:NBench.TReport.Strings)
   return _impl_.strings_.Mutable(index);
 }
 inline void TReport::set_strings(int index, const std::string& value) {
   _impl_.strings_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_set:NBench.TReport.Strings)
 }
 inline void TReport::set_strings(int index, std::string&& value) {
   _impl_.strings_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_set:NBench.TReport.Strings)
 }
 inline void TReport::set_strings(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);  _impl_.strings_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_set_char:NBench.TReport.Strings)
 }
 inline void TReport::set_strings(int index, const char* value, ::size_t size) {
   _impl_.strings_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_set_pointer:NBench.TReport.Strings)
 }
 inline std::string* TReport::_internal_add_strings() {
   return _impl_.strings_.Add();
 }
 inline void TReport::add_strings(const std::string& value) {
   _impl_.strings_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_add:NBench.TReport.Strings)
 }
 inline void TReport::add_strings(std::string&& value) {
   _impl_.strings_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_add:NBench.TReport.Strings)
 }
 inline void TReport::add_strings(const char* value) {
   GOOGLE_DCHECK(value != nullptr);  _impl_.strings_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_add_char:NBench.TReport.Strings)
 }
 inline void TReport::add_strings(const char* value, ::size_t size) {
   _impl_.strings_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_add_pointer:NBench.TReport.Strings)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 TReport::strings() const {
-  // @@protoc_insertion_point(field_list:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_list:NBench.TReport.Strings)
   return _impl_.strings_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 TReport::mutable_strings() {
-  // @@protoc_insertion_point(field_mutable_list:tutorial.TReport.Strings)
+  // @@protoc_insertion_point(field_mutable_list:NBench.TReport.Strings)
   return &_impl_.strings_;
 }
 
-// repeated .tutorial.TFileSet SetsOfFiles = 3;
+// repeated .NBench.TFileSet SetsOfFiles = 3;
 inline int TReport::_internal_setsoffiles_size() const {
   return _impl_.setsoffiles_.size();
 }
@@ -1569,33 +1737,33 @@ inline int TReport::setsoffiles_size() const {
 inline void TReport::clear_setsoffiles() {
   _impl_.setsoffiles_.Clear();
 }
-inline ::tutorial::TFileSet* TReport::mutable_setsoffiles(int index) {
-  // @@protoc_insertion_point(field_mutable:tutorial.TReport.SetsOfFiles)
+inline ::NBench::TFileSet* TReport::mutable_setsoffiles(int index) {
+  // @@protoc_insertion_point(field_mutable:NBench.TReport.SetsOfFiles)
   return _impl_.setsoffiles_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFileSet >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >*
 TReport::mutable_setsoffiles() {
-  // @@protoc_insertion_point(field_mutable_list:tutorial.TReport.SetsOfFiles)
+  // @@protoc_insertion_point(field_mutable_list:NBench.TReport.SetsOfFiles)
   return &_impl_.setsoffiles_;
 }
-inline const ::tutorial::TFileSet& TReport::_internal_setsoffiles(int index) const {
+inline const ::NBench::TFileSet& TReport::_internal_setsoffiles(int index) const {
   return _impl_.setsoffiles_.Get(index);
 }
-inline const ::tutorial::TFileSet& TReport::setsoffiles(int index) const {
-  // @@protoc_insertion_point(field_get:tutorial.TReport.SetsOfFiles)
+inline const ::NBench::TFileSet& TReport::setsoffiles(int index) const {
+  // @@protoc_insertion_point(field_get:NBench.TReport.SetsOfFiles)
   return _internal_setsoffiles(index);
 }
-inline ::tutorial::TFileSet* TReport::_internal_add_setsoffiles() {
+inline ::NBench::TFileSet* TReport::_internal_add_setsoffiles() {
   return _impl_.setsoffiles_.Add();
 }
-inline ::tutorial::TFileSet* TReport::add_setsoffiles() {
-  ::tutorial::TFileSet* _add = _internal_add_setsoffiles();
-  // @@protoc_insertion_point(field_add:tutorial.TReport.SetsOfFiles)
+inline ::NBench::TFileSet* TReport::add_setsoffiles() {
+  ::NBench::TFileSet* _add = _internal_add_setsoffiles();
+  // @@protoc_insertion_point(field_add:NBench.TReport.SetsOfFiles)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFileSet >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >&
 TReport::setsoffiles() const {
-  // @@protoc_insertion_point(field_list:tutorial.TReport.SetsOfFiles)
+  // @@protoc_insertion_point(field_list:NBench.TReport.SetsOfFiles)
   return _impl_.setsoffiles_;
 }
 
@@ -1603,7 +1771,7 @@ TReport::setsoffiles() const {
 
 // TTestLazy
 
-// required .tutorial.TRepeatedWraper wraper = 1 [lazy_pack = true];
+// required .NBench.TRepeatedWraper wraper = 1 [lazy_pack = true];
 inline bool TTestLazy::_internal_has_wraper() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.wraper_ != nullptr);
@@ -1616,17 +1784,17 @@ inline void TTestLazy::clear_wraper() {
   if (_impl_.wraper_ != nullptr) _impl_.wraper_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline const TLazyField<::tutorial::TRepeatedWraper>& TTestLazy::_internal_wraper() const {
-  const TLazyField<::tutorial::TRepeatedWraper>* p = _impl_.wraper_;
-  return p != nullptr ? *p : reinterpret_cast<const TLazyField<::tutorial::TRepeatedWraper>&>(
-      ::tutorial::_TRepeatedWraper_default_instance_);
+inline const TLazyField<::NBench::TRepeatedWraper>& TTestLazy::_internal_wraper() const {
+  const TLazyField<::NBench::TRepeatedWraper>* p = _impl_.wraper_;
+  return p != nullptr ? *p : reinterpret_cast<const TLazyField<::NBench::TRepeatedWraper>&>(
+      ::NBench::_TRepeatedWraper_default_instance_);
 }
-inline const TLazyField<::tutorial::TRepeatedWraper>& TTestLazy::wraper() const {
-  // @@protoc_insertion_point(field_get:tutorial.TTestLazy.wraper)
+inline const TLazyField<::NBench::TRepeatedWraper>& TTestLazy::wraper() const {
+  // @@protoc_insertion_point(field_get:NBench.TTestLazy.wraper)
   return _internal_wraper();
 }
 inline void TTestLazy::unsafe_arena_set_allocated_wraper(
-    TLazyField<::tutorial::TRepeatedWraper>* wraper) {
+    TLazyField<::NBench::TRepeatedWraper>* wraper) {
   if (GetArenaForAllocation() == nullptr) {
     delete _impl_.wraper_;
   }
@@ -1636,11 +1804,11 @@ inline void TTestLazy::unsafe_arena_set_allocated_wraper(
   } else {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:tutorial.TTestLazy.wraper)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:NBench.TTestLazy.wraper)
 }
-inline TLazyField<::tutorial::TRepeatedWraper>* TTestLazy::release_wraper() {
+inline TLazyField<::NBench::TRepeatedWraper>* TTestLazy::release_wraper() {
   _impl_._has_bits_[0] &= ~0x00000001u;
-  TLazyField<::tutorial::TRepeatedWraper>* temp = _impl_.wraper_;
+  TLazyField<::NBench::TRepeatedWraper>* temp = _impl_.wraper_;
   _impl_.wraper_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -1653,27 +1821,27 @@ inline TLazyField<::tutorial::TRepeatedWraper>* TTestLazy::release_wraper() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline TLazyField<::tutorial::TRepeatedWraper>* TTestLazy::unsafe_arena_release_wraper() {
-  // @@protoc_insertion_point(field_release:tutorial.TTestLazy.wraper)
+inline TLazyField<::NBench::TRepeatedWraper>* TTestLazy::unsafe_arena_release_wraper() {
+  // @@protoc_insertion_point(field_release:NBench.TTestLazy.wraper)
   _impl_._has_bits_[0] &= ~0x00000001u;
-  TLazyField<::tutorial::TRepeatedWraper>* temp = _impl_.wraper_;
+  TLazyField<::NBench::TRepeatedWraper>* temp = _impl_.wraper_;
   _impl_.wraper_ = nullptr;
   return temp;
 }
-inline TLazyField<::tutorial::TRepeatedWraper>* TTestLazy::_internal_mutable_wraper() {
+inline TLazyField<::NBench::TRepeatedWraper>* TTestLazy::_internal_mutable_wraper() {
   _impl_._has_bits_[0] |= 0x00000001u;
   if (_impl_.wraper_ == nullptr) {
-    auto* p = CreateMaybeMessage<TLazyField<::tutorial::TRepeatedWraper>>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<TLazyField<::NBench::TRepeatedWraper>>(GetArenaForAllocation());
     _impl_.wraper_ = p;
   }
   return _impl_.wraper_;
 }
-inline TLazyField<::tutorial::TRepeatedWraper>* TTestLazy::mutable_wraper() {
-  TLazyField<::tutorial::TRepeatedWraper>* _msg = _internal_mutable_wraper();
-  // @@protoc_insertion_point(field_mutable:tutorial.TTestLazy.wraper)
+inline TLazyField<::NBench::TRepeatedWraper>* TTestLazy::mutable_wraper() {
+  TLazyField<::NBench::TRepeatedWraper>* _msg = _internal_mutable_wraper();
+  // @@protoc_insertion_point(field_mutable:NBench.TTestLazy.wraper)
   return _msg;
 }
-inline void TTestLazy::set_allocated_wraper(TLazyField<::tutorial::TRepeatedWraper>* wraper) {
+inline void TTestLazy::set_allocated_wraper(TLazyField<::NBench::TRepeatedWraper>* wraper) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete _impl_.wraper_;
@@ -1690,14 +1858,14 @@ inline void TTestLazy::set_allocated_wraper(TLazyField<::tutorial::TRepeatedWrap
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
   _impl_.wraper_ = wraper;
-  // @@protoc_insertion_point(field_set_allocated:tutorial.TTestLazy.wraper)
+  // @@protoc_insertion_point(field_set_allocated:NBench.TTestLazy.wraper)
 }
 
 // -------------------------------------------------------------------
 
 // TTest
 
-// required .tutorial.TRepeatedWraper wraper = 1;
+// required .NBench.TRepeatedWraper wraper = 1;
 inline bool TTest::_internal_has_wraper() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.wraper_ != nullptr);
@@ -1710,17 +1878,17 @@ inline void TTest::clear_wraper() {
   if (_impl_.wraper_ != nullptr) _impl_.wraper_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline const ::tutorial::TRepeatedWraper& TTest::_internal_wraper() const {
-  const ::tutorial::TRepeatedWraper* p = _impl_.wraper_;
-  return p != nullptr ? *p : reinterpret_cast<const ::tutorial::TRepeatedWraper&>(
-      ::tutorial::_TRepeatedWraper_default_instance_);
+inline const ::NBench::TRepeatedWraper& TTest::_internal_wraper() const {
+  const ::NBench::TRepeatedWraper* p = _impl_.wraper_;
+  return p != nullptr ? *p : reinterpret_cast<const ::NBench::TRepeatedWraper&>(
+      ::NBench::_TRepeatedWraper_default_instance_);
 }
-inline const ::tutorial::TRepeatedWraper& TTest::wraper() const {
-  // @@protoc_insertion_point(field_get:tutorial.TTest.wraper)
+inline const ::NBench::TRepeatedWraper& TTest::wraper() const {
+  // @@protoc_insertion_point(field_get:NBench.TTest.wraper)
   return _internal_wraper();
 }
 inline void TTest::unsafe_arena_set_allocated_wraper(
-    ::tutorial::TRepeatedWraper* wraper) {
+    ::NBench::TRepeatedWraper* wraper) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.wraper_);
   }
@@ -1730,11 +1898,11 @@ inline void TTest::unsafe_arena_set_allocated_wraper(
   } else {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:tutorial.TTest.wraper)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:NBench.TTest.wraper)
 }
-inline ::tutorial::TRepeatedWraper* TTest::release_wraper() {
+inline ::NBench::TRepeatedWraper* TTest::release_wraper() {
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::tutorial::TRepeatedWraper* temp = _impl_.wraper_;
+  ::NBench::TRepeatedWraper* temp = _impl_.wraper_;
   _impl_.wraper_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -1747,27 +1915,27 @@ inline ::tutorial::TRepeatedWraper* TTest::release_wraper() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::tutorial::TRepeatedWraper* TTest::unsafe_arena_release_wraper() {
-  // @@protoc_insertion_point(field_release:tutorial.TTest.wraper)
+inline ::NBench::TRepeatedWraper* TTest::unsafe_arena_release_wraper() {
+  // @@protoc_insertion_point(field_release:NBench.TTest.wraper)
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::tutorial::TRepeatedWraper* temp = _impl_.wraper_;
+  ::NBench::TRepeatedWraper* temp = _impl_.wraper_;
   _impl_.wraper_ = nullptr;
   return temp;
 }
-inline ::tutorial::TRepeatedWraper* TTest::_internal_mutable_wraper() {
+inline ::NBench::TRepeatedWraper* TTest::_internal_mutable_wraper() {
   _impl_._has_bits_[0] |= 0x00000001u;
   if (_impl_.wraper_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tutorial::TRepeatedWraper>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::NBench::TRepeatedWraper>(GetArenaForAllocation());
     _impl_.wraper_ = p;
   }
   return _impl_.wraper_;
 }
-inline ::tutorial::TRepeatedWraper* TTest::mutable_wraper() {
-  ::tutorial::TRepeatedWraper* _msg = _internal_mutable_wraper();
-  // @@protoc_insertion_point(field_mutable:tutorial.TTest.wraper)
+inline ::NBench::TRepeatedWraper* TTest::mutable_wraper() {
+  ::NBench::TRepeatedWraper* _msg = _internal_mutable_wraper();
+  // @@protoc_insertion_point(field_mutable:NBench.TTest.wraper)
   return _msg;
 }
-inline void TTest::set_allocated_wraper(::tutorial::TRepeatedWraper* wraper) {
+inline void TTest::set_allocated_wraper(::NBench::TRepeatedWraper* wraper) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete _impl_.wraper_;
@@ -1784,14 +1952,14 @@ inline void TTest::set_allocated_wraper(::tutorial::TRepeatedWraper* wraper) {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
   _impl_.wraper_ = wraper;
-  // @@protoc_insertion_point(field_set_allocated:tutorial.TTest.wraper)
+  // @@protoc_insertion_point(field_set_allocated:NBench.TTest.wraper)
 }
 
 // -------------------------------------------------------------------
 
 // TRepeatedWraper
 
-// repeated .tutorial.TFileSet SetsOfFiles = 1;
+// repeated .NBench.TFileSet SetsOfFiles = 1;
 inline int TRepeatedWraper::_internal_setsoffiles_size() const {
   return _impl_.setsoffiles_.size();
 }
@@ -1801,34 +1969,78 @@ inline int TRepeatedWraper::setsoffiles_size() const {
 inline void TRepeatedWraper::clear_setsoffiles() {
   _impl_.setsoffiles_.Clear();
 }
-inline ::tutorial::TFileSet* TRepeatedWraper::mutable_setsoffiles(int index) {
-  // @@protoc_insertion_point(field_mutable:tutorial.TRepeatedWraper.SetsOfFiles)
+inline ::NBench::TFileSet* TRepeatedWraper::mutable_setsoffiles(int index) {
+  // @@protoc_insertion_point(field_mutable:NBench.TRepeatedWraper.SetsOfFiles)
   return _impl_.setsoffiles_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFileSet >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >*
 TRepeatedWraper::mutable_setsoffiles() {
-  // @@protoc_insertion_point(field_mutable_list:tutorial.TRepeatedWraper.SetsOfFiles)
+  // @@protoc_insertion_point(field_mutable_list:NBench.TRepeatedWraper.SetsOfFiles)
   return &_impl_.setsoffiles_;
 }
-inline const ::tutorial::TFileSet& TRepeatedWraper::_internal_setsoffiles(int index) const {
+inline const ::NBench::TFileSet& TRepeatedWraper::_internal_setsoffiles(int index) const {
   return _impl_.setsoffiles_.Get(index);
 }
-inline const ::tutorial::TFileSet& TRepeatedWraper::setsoffiles(int index) const {
-  // @@protoc_insertion_point(field_get:tutorial.TRepeatedWraper.SetsOfFiles)
+inline const ::NBench::TFileSet& TRepeatedWraper::setsoffiles(int index) const {
+  // @@protoc_insertion_point(field_get:NBench.TRepeatedWraper.SetsOfFiles)
   return _internal_setsoffiles(index);
 }
-inline ::tutorial::TFileSet* TRepeatedWraper::_internal_add_setsoffiles() {
+inline ::NBench::TFileSet* TRepeatedWraper::_internal_add_setsoffiles() {
   return _impl_.setsoffiles_.Add();
 }
-inline ::tutorial::TFileSet* TRepeatedWraper::add_setsoffiles() {
-  ::tutorial::TFileSet* _add = _internal_add_setsoffiles();
-  // @@protoc_insertion_point(field_add:tutorial.TRepeatedWraper.SetsOfFiles)
+inline ::NBench::TFileSet* TRepeatedWraper::add_setsoffiles() {
+  ::NBench::TFileSet* _add = _internal_add_setsoffiles();
+  // @@protoc_insertion_point(field_add:NBench.TRepeatedWraper.SetsOfFiles)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::tutorial::TFileSet >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >&
 TRepeatedWraper::setsoffiles() const {
-  // @@protoc_insertion_point(field_list:tutorial.TRepeatedWraper.SetsOfFiles)
+  // @@protoc_insertion_point(field_list:NBench.TRepeatedWraper.SetsOfFiles)
   return _impl_.setsoffiles_;
+}
+
+// -------------------------------------------------------------------
+
+// TSubsourceResponse
+
+// repeated .NBench.TFileSet responses = 1;
+inline int TSubsourceResponse::_internal_responses_size() const {
+  return _impl_.responses_.size();
+}
+inline int TSubsourceResponse::responses_size() const {
+  return _internal_responses_size();
+}
+inline void TSubsourceResponse::clear_responses() {
+  _impl_.responses_.Clear();
+}
+inline ::NBench::TFileSet* TSubsourceResponse::mutable_responses(int index) {
+  // @@protoc_insertion_point(field_mutable:NBench.TSubsourceResponse.responses)
+  return _impl_.responses_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >*
+TSubsourceResponse::mutable_responses() {
+  // @@protoc_insertion_point(field_mutable_list:NBench.TSubsourceResponse.responses)
+  return &_impl_.responses_;
+}
+inline const ::NBench::TFileSet& TSubsourceResponse::_internal_responses(int index) const {
+  return _impl_.responses_.Get(index);
+}
+inline const ::NBench::TFileSet& TSubsourceResponse::responses(int index) const {
+  // @@protoc_insertion_point(field_get:NBench.TSubsourceResponse.responses)
+  return _internal_responses(index);
+}
+inline ::NBench::TFileSet* TSubsourceResponse::_internal_add_responses() {
+  return _impl_.responses_.Add();
+}
+inline ::NBench::TFileSet* TSubsourceResponse::add_responses() {
+  ::NBench::TFileSet* _add = _internal_add_responses();
+  // @@protoc_insertion_point(field_add:NBench.TSubsourceResponse.responses)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NBench::TFileSet >&
+TSubsourceResponse::responses() const {
+  // @@protoc_insertion_point(field_list:NBench.TSubsourceResponse.responses)
+  return _impl_.responses_;
 }
 
 #ifdef __GNUC__
@@ -1836,7 +2048,7 @@ TRepeatedWraper::setsoffiles() const {
 #endif  // __GNUC__
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace tutorial
+}  // namespace NBench
 
 
 // @@protoc_insertion_point(global_scope)

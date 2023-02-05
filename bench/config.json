@@ -1,0 +1,21 @@
+{
+    "big_proto": {
+        "Seed": 12,
+        "NumsCount": 100,
+        "StringsCount": 100,
+        "StringSize": 100,
+        "FloatCount": 100,
+        "FilesCount": 2000,
+        "SetsOfFilesCount": 100
+    },
+    "small_proto": {
+        "Seed": 12,
+        "NumsCount": 100,
+        "StringsCount": 100,
+        "StringSize": 100,
+        "FloatCount": 100,
+        "FilesCount": 200,
+        "SetsOfFilesCount": 100
+    },
+    "subsource_cnt": 10
+}
