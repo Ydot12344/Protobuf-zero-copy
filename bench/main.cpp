@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iomanip>
 #include <nlohmann/json.hpp>
+#include <sstream>
 
 using json = nlohmann::json;
 
@@ -169,108 +170,8 @@ void Check(const std::string& resultBin) {
     }
 }
 
-static void BM_ParseProtoFromFile(benchmark::State& state) {
-
-    const auto& env = *TSingletone<TEnvHolder>();
-    std::string out;
-    out.reserve(env->ReportBinSize);
-
-    for (auto _ : state) {
-        std::ifstream in(REPORT_BIN_PATH);
-
-        NBench::TReport a;
-        NBench::TReport res;
-
-        a.ParseFromIstream(&in);
-
-        std::sort(a.mutable_setsoffiles()->begin(), a.mutable_setsoffiles()->end(), 
-            [](const auto& a, const auto& b) {return a.hash() > b.hash();}
-        );
-
-        for (size_t i = 0; i < a.setsoffiles_size() / 2; i++) {
-            *res.add_setsoffiles() = a.setsoffiles(i);
-        }
-
-        res.SerializeToString(&out);
-    }
-    
-    Check(out);
-}
-
-static void BM_CopyWithoutParsing(benchmark::State& state) {
-
-    const auto& env = *TSingletone<TEnvHolder>();
-    std::string out;
-    out.reserve(env->ReportBinSize);
-    NBench::TReport a = env->report;
-    for (auto _ : state) {
-        NBench::TReport res;
-
-        std::sort(a.mutable_setsoffiles()->begin(), a.mutable_setsoffiles()->end(), 
-            [](const auto& a, const auto& b) {return a.hash() > b.hash();}
-        );
-
-        for (size_t i = 0; i < a.setsoffiles_size() / 2; i++) {
-            *res.add_setsoffiles() = a.setsoffiles(i);
-        }
-
-        res.SerializeToString(&out);
-    }
-    
-    Check(out);
-}
-
-static void BM_ParseFromString(benchmark::State& state) {
-
-    const auto& env = *TSingletone<TEnvHolder>();
-    std::string out;
-    out.reserve(env->ReportBinSize);
-
-    std::ifstream in(REPORT_BIN_PATH);
-    std::string input = std::string((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
-    NBench::TReport a;
-    for (auto _ : state) {
-        a.ParseFromString(input);
-    }
-    
-    //Check(out);
-}
-
 static void BM_LoadEnv(benchmark::State& state) {
     const auto& env = *TSingletone<TEnvHolder>();
-}
-
-static void BM_ParseProtoFromFileWithArena(benchmark::State& state) {
-
-    const auto& env = *TSingletone<TEnvHolder>();
-    std::string out;
-    out.reserve(env->ReportBinSize);
-    size_t initial_size = env->ReportBinSize;
-    char* initial_block = new char[initial_size];
-    google::protobuf::Arena arena(initial_block, initial_size);
-
-    for (auto _ : state) {
-        std::ifstream in(REPORT_BIN_PATH);
-
-        NBench::TReport* a;
-        NBench::TReport res;
-
-        a = google::protobuf::Arena::CreateMessage<NBench::TReport>(&arena);
-
-        a->ParseFromIstream(&in);
-
-        std::sort(a->mutable_setsoffiles()->begin(), a->mutable_setsoffiles()->end(), 
-            [](const auto& a, const auto& b) {return a.hash() > b.hash();}
-        );
-
-        for (size_t i = 0; i < a->setsoffiles_size() / 2; i++) {
-            *res.add_setsoffiles() = a->setsoffiles(i);
-        }
-
-        res.SerializeToString(&out);
-    }
-    
-    Check(out);
 }
 
 static void BM_TestLazyFromString(benchmark::State& state) {
@@ -452,17 +353,64 @@ static void BM_ProxyConcatSubsourcesLazy(benchmark::State& state) {
     CheckSubsources(result);
 }
 
+static void BM_ParseFromStringStreamDefault(benchmark::State& state) {
+    const auto& env = *TSingletone<TEnvHolder>();
+    std::string data;
+    data.reserve(env->TestBinSize);
+
+    std::ifstream in(TEST_BIN_PATH);
+    data.assign((std::istreambuf_iterator<char>(in)),
+                (std::istreambuf_iterator<char>()));
+
+    NBench::TTest a;
+    for (auto _ : state) {
+        std::stringstream ss(data);
+        a.ParseFromIstream(&ss);
+    }
+
+    std::string result;
+    a.SerializeToString(&result);
+    ASSERT_EQ(result, data);
+}
+
+static void BM_ParseFromStringStreamLazy(benchmark::State& state) {
+    const auto& env = *TSingletone<TEnvHolder>();
+    std::string data;
+    data.reserve(env->TestBinSize);
+
+    std::ifstream in(TEST_BIN_PATH);
+    data.assign((std::istreambuf_iterator<char>(in)),
+                (std::istreambuf_iterator<char>()));
+
+
+    NBench::TTestLazy a;
+    for (auto _ : state) {
+        std::stringstream ss(data);
+        a.ParseFromIstream(&ss);
+    }
+
+    std::string result;
+    a.SerializeToString(&result);
+    ASSERT_EQ(result, data);
+}
+
 // Register the function as a benchmark
-//BENCHMARK(BM_ParseProtoFromFile)->src/google/protobuf/lazy_packed_field.hterations(20);
-//BENCHMARK(BM_CopyWithoutParsing)->Iterations(20);
-//BENCHMARK(BM_ParseFromString)->Iterations(20);
-//BENCHMARK(BM_ParseProtoFromFileWithArena)->Iterations(20);
 BENCHMARK(BM_LoadEnv)->Iterations(1)->Unit(benchmark::kMillisecond);
+
+// no payload benchs
 BENCHMARK(BM_Memcpy)->Iterations(20)->Unit(benchmark::kMillisecond);
 BENCHMARK(BM_TestLazyFromString)->Iterations(20)->Unit(benchmark::kMillisecond);
 BENCHMARK(BM_TestFromString)->Iterations(20)->Unit(benchmark::kMillisecond);
+
+// test unpack perf
 BENCHMARK(BM_TestTTestDefaultWork)->Iterations(20)->Unit(benchmark::kMillisecond);
 BENCHMARK(BM_TestTTestLazyDefaultWork)->Iterations(20)->Unit(benchmark::kMillisecond);
+
+// test repeated merge
 BENCHMARK(BM_ProxyConcatSubsources)->Iterations(20)->Unit(benchmark::kMillisecond);
 BENCHMARK(BM_ProxyConcatSubsourcesLazy)->Iterations(20)->Unit(benchmark::kMillisecond);
+
+// test istream optimizaton
+BENCHMARK(BM_ParseFromStringStreamDefault)->Iterations(20)->Unit(benchmark::kMillisecond);
+BENCHMARK(BM_ParseFromStringStreamLazy)->Iterations(20)->Unit(benchmark::kMillisecond);
 BENCHMARK_MAIN();

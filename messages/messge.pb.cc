@@ -1218,7 +1218,11 @@ const char* TTestLazy::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx
       // required .NBench.TRepeatedWraper wraper = 1 [lazy_pack = true];
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          _internal_mutable_wraper()->InternalParse(ctx->GetBinaryMessage(&ptr));
+          if (ctx->IsDerivedFromReleasableBufferStream()) {
+            _internal_mutable_wraper()->InternalParse(ctx->GetBinaryMessageAsList(&ptr));
+          } else {
+            _internal_mutable_wraper()->InternalParse(ctx->GetBinaryMessage(&ptr));
+          }
           CHK_(ptr);
         } else {
           goto handle_unusual;
@@ -2017,7 +2021,11 @@ const char* TSubsourceResponseLazy::_InternalParse(const char* ptr, ::_pbi::Pars
           ptr -= 1;
           do {
             ptr += 1;
-            _internal_add_responses()->InternalParse(ctx->GetBinaryMessage(&ptr));
+            if (ctx->IsDerivedFromReleasableBufferStream()) {
+              _internal_add_responses()->InternalParse(ctx->GetBinaryMessageAsList(&ptr));
+            } else {
+              _internal_add_responses()->InternalParse(ctx->GetBinaryMessage(&ptr));
+            }
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
