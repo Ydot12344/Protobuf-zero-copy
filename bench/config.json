@@ -5,7 +5,16 @@
         "StringsCount": 100,
         "StringSize": 100,
         "FloatCount": 100,
-        "FilesCount": 2000,
+        "FilesCount": 200,
+        "SetsOfFilesCount": 100
+    },
+    "medium_proto": {
+        "Seed": 12,
+        "NumsCount": 100,
+        "StringsCount": 100,
+        "StringSize": 100,
+        "FloatCount": 100,
+        "FilesCount": 20,
         "SetsOfFilesCount": 100
     },
     "small_proto": {
@@ -14,7 +23,7 @@
         "StringsCount": 100,
         "StringSize": 100,
         "FloatCount": 100,
-        "FilesCount": 200,
+        "FilesCount": 2,
         "SetsOfFilesCount": 100
     },
     "subsource_cnt": 10

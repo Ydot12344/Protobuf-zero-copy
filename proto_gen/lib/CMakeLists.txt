@@ -2,7 +2,7 @@ project(gen_proto_lib)
 
 add_library(${PROJECT_NAME})
 
-target_sources(${PROJECT_NAME} PRIVATE gen_data.cpp ${PROTO_MSG}/messge.pb.cc)
+target_sources(${PROJECT_NAME} PRIVATE gen_data.cpp ${PROTO_MSG}/common.pb.cc ${PROTO_MSG}/wraper.pb.cc)
 target_include_directories(
     ${PROJECT_NAME} PUBLIC ${PROTO_MSG}
     PUBLIC

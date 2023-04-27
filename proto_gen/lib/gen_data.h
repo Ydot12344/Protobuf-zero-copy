@@ -1,5 +1,6 @@
 #pragma once
-#include "messge.pb.h"
+#include "common.pb.h"
+#include "wraper.pb.h"
 #include <string>
 #include <nlohmann/json.hpp>
 
@@ -30,8 +31,7 @@ struct TGenOpts {
 std::string GenString(size_t size);
 
 NBench::TReport GenReport(const TGenOpts& opts);
-NBench::TTest GenTest(const TGenOpts& opts);
-NBench::TSubsourceResponse GenSubsourceResponse(const TGenOpts& opts);
+NBench::TReportWraper GenReportWraper(const TGenOpts& opts);
 
 void GenFileSet(NBench::TFileSet* val, const TGenOpts& opts);
 void GenFile(NBench::TFile* val, const TGenOpts& opts);

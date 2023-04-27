@@ -1,10 +1,8 @@
 #include "gen_data.h"
 
-namespace NGenProto {
-
 using namespace NBench;
 
-TReport GenReport(const TGenOpts& opts) {
+TReport NGenProto::GenReport(const TGenOpts& opts) {
     srand(opts.Seed);
     
     TReport res;
@@ -24,34 +22,7 @@ TReport GenReport(const TGenOpts& opts) {
     return res;
 }
 
-void GenRepeatedWraper(TRepeatedWraper* val, const TGenOpts& opts) {
-    for (size_t i = 0; i < opts.SetsOfFilesCount; i++) {
-        GenFileSet(val->add_setsoffiles(), opts);
-    }
-}
-
-void GenRepeatedWraper(TLazyField<TRepeatedWraper>* val, const TGenOpts& opts) {
-    for (size_t i = 0; i < opts.SetsOfFilesCount; i++) {
-        GenFileSet(val->Unpack()->add_setsoffiles(), opts);
-    }
-}
-
-TTest GenTest(const TGenOpts& opts) {
-    TTest res;
-    GenRepeatedWraper(res.mutable_wraper(), opts);
-    return res;
-}
-
-TSubsourceResponse GenSubsourceResponse(const TGenOpts& opts) {
-    TSubsourceResponse sub;
-    for (size_t i = 0; i < opts.SetsOfFilesCount; i++) {
-        GenFileSet(sub.add_responses(), opts);
-    }
-
-    return sub;
-}
-
-void GenFile(TFile* val, const TGenOpts& opts) {
+void NGenProto::GenFile(TFile* val, const TGenOpts& opts) {
     for (size_t i = 0; i < opts.FloatCount; i++) {
         val->add_weights(0.1f);
     }
@@ -63,7 +34,7 @@ void GenFile(TFile* val, const TGenOpts& opts) {
     }
 }
 
-void GenFileSet(TFileSet* val, const TGenOpts& opts) {
+void NGenProto::GenFileSet(TFileSet* val, const TGenOpts& opts) {
     val->set_hash(rand()%1000);
 
     for (size_t i = 0; i < opts.FilesCount; i++) {
@@ -71,7 +42,7 @@ void GenFileSet(TFileSet* val, const TGenOpts& opts) {
     }
 }
 
-std::string GenString(size_t size) {
+std::string NGenProto::GenString(size_t size) {
     std::string s;
     for (size_t i = 0; i < size; i++) {
         s += (char)(rand()%128);
@@ -79,5 +50,13 @@ std::string GenString(size_t size) {
 
     return s;
 }
-    
+
+NBench::TReportWraper NGenProto::GenReportWraper(const TGenOpts& opts) {
+    NBench::TReportWraper wraper;
+    wraper.set_some_val(123);
+    wraper.set_some_field(GenString(opts.StringSize));
+    *wraper.mutable_report() = GenReport(opts);
+
+    return wraper;
 }
+    

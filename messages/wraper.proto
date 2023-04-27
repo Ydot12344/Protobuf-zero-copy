@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package NBench;
+
+import "common.proto";
+
+message TReportWraper {
+    optional string some_field = 1;
+    optional TReport report = 2;
+    optional int32 some_val = 3;
+}
+
+message TReportWraperLazy {
+    optional string some_field = 1;
+    optional TReport report = 2 [lazy_pack = true];
+    optional int32 some_val = 3;
+}
