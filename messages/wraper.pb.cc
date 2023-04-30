@@ -537,7 +537,7 @@ class TReportWraperLazy::_Internal {
   static void set_has_some_field(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static const TLazyField<::NBench::TReport>& report(const TReportWraperLazy* msg);
+  static const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>& report(const TReportWraperLazy* msg);
   static void set_has_report(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
@@ -546,7 +546,7 @@ class TReportWraperLazy::_Internal {
   }
 };
 
-const TLazyField<::NBench::TReport>&
+const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>&
 TReportWraperLazy::_Internal::report(const TReportWraperLazy* msg) {
   return *msg->_impl_.report_;
 }
@@ -580,7 +580,7 @@ TReportWraperLazy::TReportWraperLazy(const TReportWraperLazy& from)
       _this->GetArenaForAllocation());
   }
   if (from._internal_has_report()) {
-    _this->_impl_.report_ = new TLazyField<::NBench::TReport>(*from._impl_.report_);
+    _this->_impl_.report_ = new ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>(*from._impl_.report_);
   }
   _this->_impl_.some_val_ = from._impl_.some_val_;
   // @@protoc_insertion_point(copy_constructor:NBench.TReportWraperLazy)
@@ -807,7 +807,7 @@ void TReportWraperLazy::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
       _this->_internal_set_some_field(from._internal_some_field());
     }
     if (cached_has_bits & 0x00000002u) {
-      _this->_internal_mutable_report()->TLazyField<::NBench::TReport>::MergeFrom(
+      _this->_internal_mutable_report()->::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>::MergeFrom(
           from._internal_report());
     }
     if (cached_has_bits & 0x00000004u) {

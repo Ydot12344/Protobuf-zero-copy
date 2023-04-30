@@ -1,5 +1,6 @@
 #include "bench4.h"
 #include "common.h"
+#include "google/protobuf/arena.h"
 #include "wraper.pb.h"
 #include <gtest/gtest.h>
 #include <gen_data.h>

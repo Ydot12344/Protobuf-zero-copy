@@ -439,17 +439,17 @@ class TReportWraperLazy final :
   bool _internal_has_report() const;
   public:
   void clear_report();
-  const TLazyField<::NBench::TReport>& report() const;
-  PROTOBUF_NODISCARD TLazyField<::NBench::TReport>* release_report();
-  TLazyField<::NBench::TReport>* mutable_report();
-  void set_allocated_report(TLazyField<::NBench::TReport>* report);
+  const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>& report() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* release_report();
+  ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* mutable_report();
+  void set_allocated_report(::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* report);
   private:
-  const TLazyField<::NBench::TReport>& _internal_report() const;
-  TLazyField<::NBench::TReport>* _internal_mutable_report();
+  const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>& _internal_report() const;
+  ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* _internal_mutable_report();
   public:
   void unsafe_arena_set_allocated_report(
-      TLazyField<::NBench::TReport>* report);
-  TLazyField<::NBench::TReport>* unsafe_arena_release_report();
+      ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* report);
+  ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* unsafe_arena_release_report();
 
   // optional int32 some_val = 3;
   bool has_some_val() const;
@@ -475,7 +475,7 @@ class TReportWraperLazy final :
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr some_field_;
-    TLazyField<::NBench::TReport>* report_;
+    ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* report_;
     ::int32_t some_val_;
   };
   union { Impl_ _impl_; };
@@ -781,16 +781,16 @@ class TSubsourceResponseLazy final :
   int _internal_reponses_size() const;
   public:
   void clear_reponses();
-  TLazyField<::NBench::TReport>* mutable_reponses(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< TLazyField<::NBench::TReport> >*
+  ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* mutable_reponses(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport> >*
       mutable_reponses();
   private:
-  const TLazyField<::NBench::TReport>& _internal_reponses(int index) const;
-  TLazyField<::NBench::TReport>* _internal_add_reponses();
+  const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>& _internal_reponses(int index) const;
+  ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* _internal_add_reponses();
   public:
-  const TLazyField<::NBench::TReport>& reponses(int index) const;
-  TLazyField<::NBench::TReport>* add_reponses();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< TLazyField<::NBench::TReport> >&
+  const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>& reponses(int index) const;
+  ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* add_reponses();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport> >&
       reponses() const;
 
   // @@protoc_insertion_point(class_scope:NBench.TSubsourceResponseLazy)
@@ -801,7 +801,7 @@ class TSubsourceResponseLazy final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< TLazyField<::NBench::TReport> > reponses_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport> > reponses_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1083,17 +1083,17 @@ inline bool TReportWraperLazy::_internal_has_report() const {
 inline bool TReportWraperLazy::has_report() const {
   return _internal_has_report();
 }
-inline const TLazyField<::NBench::TReport>& TReportWraperLazy::_internal_report() const {
-  const TLazyField<::NBench::TReport>* p = _impl_.report_;
-  return p != nullptr ? *p : reinterpret_cast<const TLazyField<::NBench::TReport>&>(
+inline const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>& TReportWraperLazy::_internal_report() const {
+  const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* p = _impl_.report_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>&>(
       ::NBench::_TReport_default_instance_);
 }
-inline const TLazyField<::NBench::TReport>& TReportWraperLazy::report() const {
+inline const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>& TReportWraperLazy::report() const {
   // @@protoc_insertion_point(field_get:NBench.TReportWraperLazy.report)
   return _internal_report();
 }
 inline void TReportWraperLazy::unsafe_arena_set_allocated_report(
-    TLazyField<::NBench::TReport>* report) {
+    ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* report) {
   if (GetArenaForAllocation() == nullptr) {
     delete _impl_.report_;
   }
@@ -1105,9 +1105,9 @@ inline void TReportWraperLazy::unsafe_arena_set_allocated_report(
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:NBench.TReportWraperLazy.report)
 }
-inline TLazyField<::NBench::TReport>* TReportWraperLazy::release_report() {
+inline ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* TReportWraperLazy::release_report() {
   _impl_._has_bits_[0] &= ~0x00000002u;
-  TLazyField<::NBench::TReport>* temp = _impl_.report_;
+  ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* temp = _impl_.report_;
   _impl_.report_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -1120,27 +1120,27 @@ inline TLazyField<::NBench::TReport>* TReportWraperLazy::release_report() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline TLazyField<::NBench::TReport>* TReportWraperLazy::unsafe_arena_release_report() {
+inline ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* TReportWraperLazy::unsafe_arena_release_report() {
   // @@protoc_insertion_point(field_release:NBench.TReportWraperLazy.report)
   _impl_._has_bits_[0] &= ~0x00000002u;
-  TLazyField<::NBench::TReport>* temp = _impl_.report_;
+  ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* temp = _impl_.report_;
   _impl_.report_ = nullptr;
   return temp;
 }
-inline TLazyField<::NBench::TReport>* TReportWraperLazy::_internal_mutable_report() {
+inline ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* TReportWraperLazy::_internal_mutable_report() {
   _impl_._has_bits_[0] |= 0x00000002u;
   if (_impl_.report_ == nullptr) {
-    auto* p = CreateMaybeMessage<TLazyField<::NBench::TReport>>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>>(GetArenaForAllocation());
     _impl_.report_ = p;
   }
   return _impl_.report_;
 }
-inline TLazyField<::NBench::TReport>* TReportWraperLazy::mutable_report() {
-  TLazyField<::NBench::TReport>* _msg = _internal_mutable_report();
+inline ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* TReportWraperLazy::mutable_report() {
+  ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* _msg = _internal_mutable_report();
   // @@protoc_insertion_point(field_mutable:NBench.TReportWraperLazy.report)
   return _msg;
 }
-inline void TReportWraperLazy::set_allocated_report(TLazyField<::NBench::TReport>* report) {
+inline void TReportWraperLazy::set_allocated_report(::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* report) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.report_);
@@ -1241,31 +1241,31 @@ inline int TSubsourceResponseLazy::_internal_reponses_size() const {
 inline int TSubsourceResponseLazy::reponses_size() const {
   return _internal_reponses_size();
 }
-inline TLazyField<::NBench::TReport>* TSubsourceResponseLazy::mutable_reponses(int index) {
+inline ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* TSubsourceResponseLazy::mutable_reponses(int index) {
   // @@protoc_insertion_point(field_mutable:NBench.TSubsourceResponseLazy.reponses)
   return _impl_.reponses_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< TLazyField<::NBench::TReport> >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport> >*
 TSubsourceResponseLazy::mutable_reponses() {
   // @@protoc_insertion_point(field_mutable_list:NBench.TSubsourceResponseLazy.reponses)
   return &_impl_.reponses_;
 }
-inline const TLazyField<::NBench::TReport>& TSubsourceResponseLazy::_internal_reponses(int index) const {
+inline const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>& TSubsourceResponseLazy::_internal_reponses(int index) const {
   return _impl_.reponses_.Get(index);
 }
-inline const TLazyField<::NBench::TReport>& TSubsourceResponseLazy::reponses(int index) const {
+inline const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>& TSubsourceResponseLazy::reponses(int index) const {
   // @@protoc_insertion_point(field_get:NBench.TSubsourceResponseLazy.reponses)
   return _internal_reponses(index);
 }
-inline TLazyField<::NBench::TReport>* TSubsourceResponseLazy::_internal_add_reponses() {
+inline ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* TSubsourceResponseLazy::_internal_add_reponses() {
   return _impl_.reponses_.Add();
 }
-inline TLazyField<::NBench::TReport>* TSubsourceResponseLazy::add_reponses() {
-  TLazyField<::NBench::TReport>* _add = _internal_add_reponses();
+inline ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* TSubsourceResponseLazy::add_reponses() {
+  ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* _add = _internal_add_reponses();
   // @@protoc_insertion_point(field_add:NBench.TSubsourceResponseLazy.reponses)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< TLazyField<::NBench::TReport> >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport> >&
 TSubsourceResponseLazy::reponses() const {
   // @@protoc_insertion_point(field_list:NBench.TSubsourceResponseLazy.reponses)
   return _impl_.reponses_;
