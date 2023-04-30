@@ -14,4 +14,4 @@ void BM_TestDefaultWorkBig(benchmark::State& state);
 void BM_TestDefaultWorkMedium(benchmark::State& state);
 void BM_TestDefaultWorkSmall(benchmark::State& state);
 
-} // namespace NBench1
+} // namespace NBench2

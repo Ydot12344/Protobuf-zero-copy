@@ -15,3 +15,11 @@ message TReportWraperLazy {
     optional TReport report = 2 [lazy_pack = true];
     optional int32 some_val = 3;
 }
+
+message TSubsourceResponse {
+    repeated TReport reponses = 1;
+}
+
+message TSubsourceResponseLazy {
+    repeated TReport reponses = 1 [lazy_pack = true];
+}

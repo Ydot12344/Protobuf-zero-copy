@@ -16,11 +16,6 @@ void NBench2::LoadEnv() {
     bigReportBin = NGenProto::GenReportWraper(env->bigOpts).SerializeAsString();
     mediumReportBin = NGenProto::GenReportWraper(env->mediumOpts).SerializeAsString();
     smallReportBin = NGenProto::GenReportWraper(env->smallOpts).SerializeAsString();
-
-    std::cout << "Bench2:\n";
-    std::cout << "\tBig    - " << bigReportBin.size() / 1024 << "KB\n";
-    std::cout << "\tMedium - " << mediumReportBin.size() / 1024 << "KB\n";
-    std::cout << "\tSmall  - " << smallReportBin.size() / 1024 << "KB\n";
 }
 
 void NBench2::BM_TestLazyDefaultWorkBig(benchmark::State& state) {
@@ -40,9 +35,7 @@ void NBench2::BM_TestLazyDefaultWorkBig(benchmark::State& state) {
     file_set->set_hash(0);
     file_set->mutable_files(0)->set_name("rename_0");
 
-    if (result != tmp.SerializeAsString()) {
-        throw std::runtime_error("NOT EQUAL");
-    }
+    assert(result == tmp.SerializeAsString());
 }
 void NBench2::BM_TestLazyDefaultWorkMedium(benchmark::State& state) {
     NBench::TReportWraperLazy a;
@@ -61,9 +54,7 @@ void NBench2::BM_TestLazyDefaultWorkMedium(benchmark::State& state) {
     file_set->set_hash(0);
     file_set->mutable_files(0)->set_name("rename_0");
 
-    if (result != tmp.SerializeAsString()) {
-        throw std::runtime_error("NOT EQUAL");
-    }
+    assert(result != tmp.SerializeAsString());
 }
 void NBench2::BM_TestLazyDefaultWorkSmall(benchmark::State& state) {
     NBench::TReportWraperLazy a;
@@ -82,9 +73,7 @@ void NBench2::BM_TestLazyDefaultWorkSmall(benchmark::State& state) {
     file_set->set_hash(0);
     file_set->mutable_files(0)->set_name("rename_0");
 
-    if (result != tmp.SerializeAsString()) {
-        throw std::runtime_error("NOT EQUAL");
-    }
+    assert(result != tmp.SerializeAsString());
 }
 
 void NBench2::BM_TestDefaultWorkBig(benchmark::State& state) {

@@ -5,6 +5,7 @@
 #include <gen_data.h>
 
 #include <exception>
+#include <iomanip>
 
 static std::string bigReportBin;
 static std::string mediumReportBin;
@@ -17,10 +18,9 @@ void NBench1::LoadEnv() {
     mediumReportBin = NGenProto::GenReportWraper(env->mediumOpts).SerializeAsString();
     smallReportBin = NGenProto::GenReportWraper(env->smallOpts).SerializeAsString();
 
-    std::cout << "Bench1:\n";
-    std::cout << "\tBig    - " << bigReportBin.size() / 1024 << "KB\n";
-    std::cout << "\tMedium - " << mediumReportBin.size() / 1024 << "KB\n";
-    std::cout << "\tSmall  - " << smallReportBin.size() / 1024 << "KB\n";
+    std::cout << "Big    - " << SizeFormat(bigReportBin.size()) << std::endl;
+    std::cout << "Medium - " << SizeFormat(mediumReportBin.size()) << std::endl;
+    std::cout << "Small  - " << SizeFormat(smallReportBin.size()) << std::endl;
 }
 
 void NBench1::BM_TestLazyFromStringBig(benchmark::State& state) {
