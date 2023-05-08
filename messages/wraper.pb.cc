@@ -667,11 +667,7 @@ const char* TReportWraperLazy::_InternalParse(const char* ptr, ::_pbi::ParseCont
       // optional .NBench.TReport report = 2 [lazy_pack = true];
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          if (ctx->IsDerivedFromReleasableBufferStream()) {
-            _internal_mutable_report()->InternalParse(ctx->GetBinaryMessageAsBuffersArray(&ptr));
-          } else {
-            _internal_mutable_report()->InternalParse(ctx->GetBinaryMessage(&ptr));
-          }
+          ptr = _internal_mutable_report()->_InternalParse(ptr, ctx);
           CHK_(ptr);
         } else {
           goto handle_unusual;
@@ -732,9 +728,8 @@ failure:
   // optional .NBench.TReport report = 2 [lazy_pack = true];
   if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalPreWriteMessage(2,
+      InternalWriteMessage(2, _Internal::report(this),
         _Internal::report(this).GetCachedSize(), target, stream);
-    target = _Internal::report(this).Serialize(target, stream);
   }
 
   // optional int32 some_val = 3;
@@ -1128,11 +1123,7 @@ const char* TSubsourceResponseLazy::_InternalParse(const char* ptr, ::_pbi::Pars
           ptr -= 1;
           do {
             ptr += 1;
-            if (ctx->IsDerivedFromReleasableBufferStream()) {
-              _internal_add_reponses()->InternalParse(ctx->GetBinaryMessageAsBuffersArray(&ptr));
-            } else {
-              _internal_add_reponses()->InternalParse(ctx->GetBinaryMessage(&ptr));
-            }
+            ptr = _internal_add_reponses()->_InternalParse(ptr, ctx);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
@@ -1173,10 +1164,9 @@ failure:
   // repeated .NBench.TReport reponses = 1 [lazy_pack = true];
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_reponses_size()); i < n; i++) {
-  target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-    InternalPreWriteMessage(1,
-      this->_internal_reponses(i).GetCachedSize(), target, stream);
-  target = this->_internal_reponses(i).Serialize(target, stream);
+    const auto& repfield = this->_internal_reponses(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {

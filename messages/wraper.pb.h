@@ -1095,7 +1095,7 @@ inline const ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>& TReportWrap
 inline void TReportWraperLazy::unsafe_arena_set_allocated_report(
     ::PROTOBUF_NAMESPACE_ID::TLazyField<::NBench::TReport>* report) {
   if (GetArenaForAllocation() == nullptr) {
-    delete _impl_.report_;
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.report_);
   }
   _impl_.report_ = report;
   if (report) {
