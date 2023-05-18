@@ -1,15 +1,32 @@
+cmake_minimum_required(VERSION 3.22)
+
+set(CMAKE_CXX_STANDARD 14) 
 project(gen_proto_lib)
 
 add_library(${PROJECT_NAME})
 
-target_sources(${PROJECT_NAME} PRIVATE gen_data.cpp ${PROTO_MSG}/common.pb.cc ${PROTO_MSG}/wraper.pb.cc)
-target_include_directories(
-    ${PROJECT_NAME} PUBLIC ${PROTO_MSG}
-    PUBLIC
-    # where top-level project will look for the library's public headers
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-    # where external projects will look for the library's public headers
-    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+target_include_directories (
+    ${PROJECT_NAME} PUBLIC 
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE protobuf::libprotobuf nlohmann_json::nlohmann_json)
+file(GLOB proto_srcs "${PROTO_MSG}/*.cc")
+
+target_sources(
+    ${PROJECT_NAME} PUBLIC 
+    gen_data.cpp
+    gen_data.h
+    ${proto_srcs}
+)
+
+target_include_directories(
+    ${PROJECT_NAME} PUBLIC 
+    ${PROTO_MSG}
+    ${CMAKE_HOME_DIRECTORY}/third_party/json/single_include
+)
+
+target_link_libraries(
+    ${PROJECT_NAME} PRIVATE 
+    protobuf::libprotobuf 
+    nlohmann_json::nlohmann_json
+)

@@ -35,7 +35,7 @@ public:
     TEnvHolder() {
         // Load config
 
-        std::ifstream stream("/home/andreizdor/hse/diplom/bench/config.json");
+        std::ifstream stream("config.json");
         json config = json::parse(stream);
 
         auto bigProto = config["big_proto"];

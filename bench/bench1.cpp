@@ -1,7 +1,6 @@
 #include "bench1.h"
 #include "common.h"
 #include "wraper.pb.h"
-#include <gtest/gtest.h>
 #include <gen_data.h>
 
 #include <exception>

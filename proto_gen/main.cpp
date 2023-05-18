@@ -2,11 +2,12 @@
 #include <string>
 #include <fstream>
 
-#include "messge.pb.h"
+#include "common.pb.h"
 #include "opts.h"
 #include "gen_data.h"
+#include "wraper.pb.h"
 
-using namespace tutorial;
+using namespace NBench;
 using namespace NGenProto;
 
 int main(int argc, char** argv) {
