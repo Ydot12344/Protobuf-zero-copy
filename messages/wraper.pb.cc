@@ -667,7 +667,11 @@ const char* TReportWraperLazy::_InternalParse(const char* ptr, ::_pbi::ParseCont
       // optional .NBench.TReport report = 2 [lazy_pack = true];
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          ptr = static_cast<MessageLite*>(_internal_mutable_report())->_InternalParse(ptr, ctx);
+          if (ctx->IsDerivedFromReleasableBufferStream()) {
+            _internal_mutable_report()->_InternalParse(ctx->GetBinaryMessageAsBuffersArray(&ptr));
+          } else {
+            _internal_mutable_report()->_InternalParse(ctx->GetBinaryMessage(&ptr));
+          }
           CHK_(ptr);
         } else {
           goto handle_unusual;
@@ -1123,7 +1127,11 @@ const char* TSubsourceResponseLazy::_InternalParse(const char* ptr, ::_pbi::Pars
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = static_cast<MessageLite*>(_internal_add_reponses())->_InternalParse(ptr, ctx);
+            if (ctx->IsDerivedFromReleasableBufferStream()) {
+              _internal_add_reponses()->_InternalParse(ctx->GetBinaryMessageAsBuffersArray(&ptr));
+            } else {
+              _internal_add_reponses()->_InternalParse(ctx->GetBinaryMessage(&ptr));
+            }
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
