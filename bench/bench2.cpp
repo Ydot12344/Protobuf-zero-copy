@@ -54,7 +54,7 @@ void NBench2::BM_TestLazyDefaultWorkMedium(benchmark::State& state) {
     file_set->set_hash(0);
     file_set->mutable_files(0)->set_name("rename_0");
 
-    assert(result != tmp.SerializeAsString());
+    assert(result == tmp.SerializeAsString());
 }
 void NBench2::BM_TestLazyDefaultWorkSmall(benchmark::State& state) {
     NBench::TReportWraperLazy a;
@@ -73,7 +73,7 @@ void NBench2::BM_TestLazyDefaultWorkSmall(benchmark::State& state) {
     file_set->set_hash(0);
     file_set->mutable_files(0)->set_name("rename_0");
 
-    assert(result != tmp.SerializeAsString());
+    assert(result == tmp.SerializeAsString());
 }
 
 void NBench2::BM_TestDefaultWorkBig(benchmark::State& state) {
