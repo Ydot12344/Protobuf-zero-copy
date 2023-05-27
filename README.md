@@ -1,4 +1,9 @@
 # Protobuf-zero-copy
+
+This is a repository with benchmarks for fork of library Protocol Buffers with implementation lazy serialization/deserialization for C++ (attribute [lazy_pack=true])
+
+[Protobuf fork](https://github.com/Ydot12344/protobuf)
+
 ### Building & Run benchmarks
 OC Linux
 
